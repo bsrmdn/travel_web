@@ -1,8 +1,7 @@
 <?php
 
+use App\Http\Controllers\CourseScheduleController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\FlightScheduleController;
-use App\Models\FlightSchedule;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +14,8 @@ use App\Models\FlightSchedule;
 |
 */
 
-Route::get('/', [FlightScheduleController::class, 'index']);
+Route::get('/', [CourseScheduleController::class, 'index']);
+
+
+// kode rombel | pembelanjaean | waktu | ruang | status
+// VII - BIN - B
