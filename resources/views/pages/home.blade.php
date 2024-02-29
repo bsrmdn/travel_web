@@ -55,17 +55,15 @@
                     </thead>
                     <tbody>
                         @foreach ($courseSchedules as $schedule)
-                            @if ($schedule->jam_berangkat >= now('Asia/Jakarta')->toTimeString())
-                                <tr>
-                                    {{-- <td>{{ }}</td> --}}
-                                    <td>{{ $schedule->kode_rombel }}</td>
-                                    <td>{{ $schedule->pelajaran }}</td>
-                                    <td>{{ $schedule->waktu_mulai }}</td>
-                                    <td>{{ $schedule->waktu_selesai }}</td>
-                                    <td>{{ $schedule->ruang }}</td>
-                                    <td>{{ $schedule->keterangan }}</td>
-                                </tr>
-                            @endif
+                            <tr>
+                                {{-- <td>{{ }}</td> --}}
+                                <td>{{ $schedule->kode_rombel }}</td>
+                                <td>{{ $schedule->pelajaran }}</td>
+                                <td>{{ $schedule->waktu_mulai }}</td>
+                                <td>{{ $schedule->waktu_selesai }}</td>
+                                <td>{{ $schedule->ruang }}</td>
+                                <td>{{ $schedule->keterangan }}</td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>

@@ -20,14 +20,14 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        // CourseSchedule::create([
-        //     'kode_rombel' => "XI - BIN - A",
-        //     'pelajaran' => "Bahasa Indonesia - Guru B. ind",
-        //     'waktu_mulai' => "7.40",
-        //     'waktu_selesai' => "10.40",
-        //     'ruang' => "A - 3.2",
-        //     'keterangan' => "pelajaran selesai"
-        // ]);
+        CourseSchedule::create([
+            'kode_rombel' => "XI - BIN - A",
+            'pelajaran' => "Bahasa Indonesia - Guru B. ind",
+            'waktu_mulai' => "7.40",
+            'waktu_selesai' => "10.40",
+            'ruang' => "A - 3.2",
+            'keterangan' => "pelajaran selesai"
+        ]);
         CourseSchedule::factory(5)->create();
     }
 }
