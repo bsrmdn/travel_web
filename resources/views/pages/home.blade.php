@@ -17,11 +17,12 @@
                 <table class="table pb-3">
                     <thead>
                         <tr>
-                            <th scope="col">Kode Penerbangan</th>
-                            <th scope="col">Nama Pesawat</th>
-                            <th scope="col">Tujuan</th>
-                            <th scope="col">Jam Berangkat</th>
-                            <th scope="col">Status</th>
+                            <th scope="col">Kode Rombel</th>
+                            <th scope="col">Pelajaran</th>
+                            <th scope="col">Waktu Mulai</th>
+                            <th scope="col">Waktu Selesai</th>
+                            <th scope="col">Ruang</th>
+                            <th scope="col">Keterangan</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -46,11 +47,12 @@
                 <table class="table pb-3">
                     <thead>
                         <tr>
-                            <th scope="col">Kode Penerbangan</th>
-                            <th scope="col">Nama Pesawat</th>
-                            <th scope="col">Tujuan</th>
-                            <th scope="col">Jam Berangkat</th>
-                            <th scope="col">Status</th>
+                            <th scope="col">Kode Rombel</th>
+                            <th scope="col">Pelajaran</th>
+                            <th scope="col">Waktu Mulai</th>
+                            <th scope="col">Waktu Selesai</th>
+                            <th scope="col">Ruang</th>
+                            <th scope="col">Keterangan</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -69,7 +71,31 @@
                 </table>
             </div>
             <div class="carousel-item">
-                <img src="..." class="d-block w-100" alt="...">
+                <table class="table pb-3">
+                    <thead>
+                        <tr>
+                            <th scope="col">Kode Rombel</th>
+                            <th scope="col">Pelajaran</th>
+                            <th scope="col">Waktu Mulai</th>
+                            <th scope="col">Waktu Selesai</th>
+                            <th scope="col">Ruang</th>
+                            <th scope="col">Keterangan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($courseSchedules as $schedule)
+                            <tr>
+                                {{-- <td>{{ }}</td> --}}
+                                <td>{{ $schedule->kode_rombel }}</td>
+                                <td>{{ $schedule->pelajaran }}</td>
+                                <td>{{ $schedule->waktu_mulai }}</td>
+                                <td>{{ $schedule->waktu_selesai }}</td>
+                                <td>{{ $schedule->ruang }}</td>
+                                <td>{{ $schedule->keterangan }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
