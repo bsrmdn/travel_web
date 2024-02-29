@@ -36,6 +36,21 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
+    <script>
+        fetch('/flight-schedules')
+            .then(response => response.json())
+            .then(data => {
+                const currentTime = new Date();
+                const filteredSchedules = data.filter(schedule => {
+                    const departureTime = new Date(schedule.departure_time);
+                    return departureTime > currentTime;
+                });
+
+                // Lakukan sesuatu dengan filteredSchedules, misalnya menampilkan dalam tabel HTML
+                console.log(filteredSchedules);
+            })
+            .catch(error => console.error('Error:', error));
+    </script>
 </body>
 
 </html>
