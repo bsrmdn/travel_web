@@ -13,7 +13,7 @@ class FlightScheduleController extends Controller
      */
     public function index()
     {
-        $flightSchedule = FlightSchedule::all();
+        $flightSchedules = FlightSchedule::all();
         return view('pages.home', compact('flightSchedule'));
     }
 

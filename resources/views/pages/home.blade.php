@@ -13,20 +13,20 @@
         <thead>
             <tr>
                 <th>Kode Penerbangan</th>
-                <th>Waktu Keberangkatan</th>
-                <th>Waktu Sampai</th>
-                <th>Lokasi Keberangkatan</th>
-                <th>Lokasi Sampai</th>
+                <th>Nama Pesawat</th>
+                <th>Tujuan</th>
+                <th>Jam Berangkat</th>
+                <th>Status</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($flight_schedules as $schedule)
+            @foreach ($flightSchedules as $schedule)
                 <tr>
-                    <td>{{ $schedule->flight_number }}</td>
-                    <td>{{ $schedule->departure_time }}</td>
-                    <td>{{ $schedule->arrival_time }}</td>
-                    <td>{{ $schedule->departure_location }}</td>
-                    <td>{{ $schedule->arrival_location }}</td>
+                    <td>{{ $schedule->kode_penerbangan }}</td>
+                    <td>{{ $schedule->nama_pesawat }}</td>
+                    <td>{{ $schedule->tujuan }}</td>
+                    <td>{{ $schedule->jam_berangkat }}</td>
+                    <td>{{ $schedule->status }}</td>
                 </tr>
             @endforeach
         </tbody>
