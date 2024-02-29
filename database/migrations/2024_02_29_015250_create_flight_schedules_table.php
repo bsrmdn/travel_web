@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('flight_schedules', function (Blueprint $table) {
             $table->id();
-            $table->string("");
+            $table->string("kode_penerbangan");
+            $table->string("nama_pesawat");
+            $table->string("tujuan");
+            $table->time('jam_berangkat');
+            $table->string("status");
             $table->timestamps();
         });
     }
