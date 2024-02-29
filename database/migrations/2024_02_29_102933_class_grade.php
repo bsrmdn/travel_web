@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('ClassGrade', function (Blueprint $table) {
             $table->id();
-            $table->enum('tingkatan', ['VII', 'VII', 'IX']);
+            $table->enum('tingkatan', ['VII', 'VIII', 'IX']);
             $kelas = [];
             for ($i = ord('A'); $i <= ord('J'); $i++) {
                 $kelas[] = chr($i);
