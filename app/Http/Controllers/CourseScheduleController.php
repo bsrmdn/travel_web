@@ -15,8 +15,7 @@ class CourseScheduleController extends Controller
     public function index()
     {
         $courseSchedules = CourseSchedule::all();
-        $flightSchedules = FlightSchedule::all();
-        return view('pages.home', compact(['courseSchedules', 'flightSchedules']));
+        return view('pages.home', compact('courseSchedules'));
     }
 
     /**

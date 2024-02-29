@@ -13,90 +13,36 @@
 <body>
     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <table class="table pb-3">
-                    <thead>
-                        <tr>
-                            <th scope="col">Kode Rombel</th>
-                            <th scope="col">Pelajaran</th>
-                            <th scope="col">Waktu Mulai</th>
-                            <th scope="col">Waktu Selesai</th>
-                            <th scope="col">Ruang</th>
-                            <th scope="col">Keterangan</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($flightSchedules as $schedule)
-                            @if ($schedule->jam_berangkat >= now('Asia/Jakarta')->toTimeString())
+            @for ($i = 0; $i < 3; $i++)
+                <div class="carousel-item active">
+                    <table class="table pb-3">
+                        <thead>
+                            <tr>
+                                <th scope="col">Kode Rombel</th>
+                                <th scope="col">Pelajaran</th>
+                                <th scope="col">Waktu Mulai</th>
+                                <th scope="col">Waktu Selesai</th>
+                                <th scope="col">Ruang</th>
+                                <th scope="col">Keterangan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($courseSchedules as $schedule)
+                                @if ($schedule->waktu_mulai >= now('Asia/Jakarta')->toTimeString())
+                                @endif
                                 <tr>
-                                    {{-- <td>{{ }}</td> --}}
-                                    <td>{{ $schedule->kode_penerbangan }}</td>
-                                    <td>{{ $schedule->nama_pesawat }}</td>
-                                    <td>{{ $schedule->tujuan }}</td>
-                                    <td>{{ $schedule->jam_berangkat }}</td>
-                                    <td>{{ $schedule->gerbang }}</td>
-                                    <td>{{ $schedule->status }}</td>
-                                    <td>{{ now('Asia/Jakarta')->toTimeString() }}</td>
+                                    <td>{{ $schedule->kode_rombel }}</td>
+                                    <td>{{ $schedule->pelajaran }}</td>
+                                    <td>{{ $schedule->waktu_mulai }}</td>
+                                    <td>{{ $schedule->waktu_selesai }}</td>
+                                    <td>{{ $schedule->ruang }}</td>
+                                    <td>{{ $schedule->keterangan }}</td>
                                 </tr>
-                            @endif
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-            <div class="carousel-item">
-                <table class="table pb-3">
-                    <thead>
-                        <tr>
-                            <th scope="col">Kode Rombel</th>
-                            <th scope="col">Pelajaran</th>
-                            <th scope="col">Waktu Mulai</th>
-                            <th scope="col">Waktu Selesai</th>
-                            <th scope="col">Ruang</th>
-                            <th scope="col">Keterangan</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($courseSchedules as $schedule)
-                            <tr>
-                                {{-- <td>{{ }}</td> --}}
-                                <td>{{ $schedule->kode_rombel }}</td>
-                                <td>{{ $schedule->pelajaran }}</td>
-                                <td>{{ $schedule->waktu_mulai }}</td>
-                                <td>{{ $schedule->waktu_selesai }}</td>
-                                <td>{{ $schedule->ruang }}</td>
-                                <td>{{ $schedule->keterangan }}</td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-            <div class="carousel-item">
-                <table class="table pb-3">
-                    <thead>
-                        <tr>
-                            <th scope="col">Kode Rombel</th>
-                            <th scope="col">Pelajaran</th>
-                            <th scope="col">Waktu Mulai</th>
-                            <th scope="col">Waktu Selesai</th>
-                            <th scope="col">Ruang</th>
-                            <th scope="col">Keterangan</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($courseSchedules as $schedule)
-                            <tr>
-                                {{-- <td>{{ }}</td> --}}
-                                <td>{{ $schedule->kode_rombel }}</td>
-                                <td>{{ $schedule->pelajaran }}</td>
-                                <td>{{ $schedule->waktu_mulai }}</td>
-                                <td>{{ $schedule->waktu_selesai }}</td>
-                                <td>{{ $schedule->ruang }}</td>
-                                <td>{{ $schedule->keterangan }}</td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            @endfor
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
             data-bs-slide="prev">
