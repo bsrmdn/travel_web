@@ -11,6 +11,17 @@
 </head>
 
 <body>
+    <header>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col">
+              <div id="pengumuman" class="p-3">
+                <marquee bgcolor="red">RUNNING TEXT LATAR KUNING</marquee>
+              </div>
+            </div>
+          </div>
+        </div>
+        </header>
     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             @for ($i = 0; $i < 3; $i++)
@@ -55,6 +66,26 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
+    <!-- Bagian Sponsor, Jadwal Guru Piket, dan Jadwal Sholat -->
+    <div class="col-md-4">
+        <aside>
+          <!-- Bagian sponsor -->
+          <div id="sponsor" class="bg-light p-3 mb-3">
+            <h2>Sponsor</h2>
+            <p>Isi sponsor disini</p>
+          </div>
+          <!-- Bagian Jadwal Guru Piket -->
+          <div id="guru-piket" class="bg-light p-3 mb-3">
+            <h2>Jadwal Guru Piket</h2>
+            <p>Isi jadwal guru piket disini</p>
+          </div>
+          <!-- Bagian Jadwal Sholat -->
+          <div id="jadwal-sholat" class="bg-light p-3">
+            <h2>Jadwal Sholat</h2>
+            <p>Isi jadwal sholat disini</p>
+          </div>
+        </aside>
+      </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
