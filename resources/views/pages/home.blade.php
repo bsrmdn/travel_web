@@ -11,37 +11,53 @@
 </head>
 
 <body>
-    <table class="table pb-3">
-        <thead>
-            <tr>
-                <th scope="col">Kode Penerbangan</th>
-                <th scope="col">Nama Pesawat</th>
-                <th scope="col">Tujuan</th>
-                <th scope="col">Jam Berangkat</th>
-                <th scope="col">Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($flightSchedules as $schedule)
-                @if ($schedule->jam_berangkat >= now('Asia/Jakarta')->toTimeString())
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <table class="table pb-3">
+                <thead>
                     <tr>
-                        {{-- <td>{{ }}</td> --}}
-                        <td>{{ $schedule->kode_penerbangan }}</td>
-                        <td>{{ $schedule->nama_pesawat }}</td>
-                        <td>{{ $schedule->tujuan }}</td>
-                        <td>{{ $schedule->jam_berangkat }}</td>
-                        <td>{{ $schedule->gerbang }}</td>
-                        <td>{{ $schedule->status }}</td>
-                        <td>{{ now('Asia/Jakarta')->toTimeString() }}</td>
+                        <th scope="col">Kode Penerbangan</th>
+                        <th scope="col">Nama Pesawat</th>
+                        <th scope="col">Tujuan</th>
+                        <th scope="col">Jam Berangkat</th>
+                        <th scope="col">Status</th>
                     </tr>
-                @endif
-            @endforeach
-        </tbody>
-    </table>
-
-
-
-
+                </thead>
+                <tbody>
+                    @foreach ($flightSchedules as $schedule)
+                        @if ($schedule->jam_berangkat >= now('Asia/Jakarta')->toTimeString())
+                            <tr>
+                                {{-- <td>{{ }}</td> --}}
+                                <td>{{ $schedule->kode_penerbangan }}</td>
+                                <td>{{ $schedule->nama_pesawat }}</td>
+                                <td>{{ $schedule->tujuan }}</td>
+                                <td>{{ $schedule->jam_berangkat }}</td>
+                                <td>{{ $schedule->gerbang }}</td>
+                                <td>{{ $schedule->status }}</td>
+                                <td>{{ now('Asia/Jakarta')->toTimeString() }}</td>
+                            </tr>
+                        @endif
+                    @endforeach
+                </tbody>
+            </table>
+          </div>
+          <div class="carousel-item">
+            <img src="..." class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="..." class="d-block w-100" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
