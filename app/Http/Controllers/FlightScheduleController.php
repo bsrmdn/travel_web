@@ -14,8 +14,8 @@ class FlightScheduleController extends Controller
     public function index()
     {
         $flightSchedules = FlightSchedule::all();
-        // return view('pages.home', compact('flightSchedules'));
-        return response()->json($flightSchedules);
+        return view('pages.home', compact('flightSchedules'));
+        // return response()->json($flightSchedules);
     }
 
     /**

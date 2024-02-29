@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <table class="table">
+    <table class="table pb-3">
         <thead>
             <tr>
                 <th scope="col">Kode Penerbangan</th>
@@ -23,21 +23,30 @@
         </thead>
         <tbody>
             @foreach ($flightSchedules as $schedule)
-                <tr>
-                    <td>{{ $schedule->kode_penerbangan }}</td>
-                    <td>{{ $schedule->nama_pesawat }}</td>
-                    <td>{{ $schedule->tujuan }}</td>
-                    <td>{{ $schedule->jam_berangkat }}</td>
-                    <td>{{ $schedule->status }}</td>
-                </tr>
+                @if ($schedule->jam_berangkat >= now('Asia/Jakarta')->toTimeString())
+                    <tr>
+                        {{-- <td>{{ }}</td> --}}
+                        <td>{{ $schedule->kode_penerbangan }}</td>
+                        <td>{{ $schedule->nama_pesawat }}</td>
+                        <td>{{ $schedule->tujuan }}</td>
+                        <td>{{ $schedule->jam_berangkat }}</td>
+                        <td>{{ $schedule->gerbang }}</td>
+                        <td>{{ $schedule->status }}</td>
+                        <td>{{ now('Asia/Jakarta')->toTimeString() }}</td>
+                    </tr>
+                @endif
             @endforeach
         </tbody>
     </table>
+
+
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
     <script>
-        fetch('/flight-schedules')
+        fetch('/')
             .then(response => response.json())
             .then(data => {
                 const currentTime = new Date();

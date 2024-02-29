@@ -15,4 +15,4 @@ use App\Models\FlightSchedule;
 |
 */
 
-Route::get('/', 'FlightScheduleController@index');
+Route::get('/', [FlightScheduleController::class, 'index']);
