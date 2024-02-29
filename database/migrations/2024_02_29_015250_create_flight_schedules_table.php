@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string("nama_pesawat");
             $table->string("tujuan");
             $table->time('jam_berangkat');
+            $table->string("gerbang");
             $table->string("status");
             $table->timestamps();
         });
