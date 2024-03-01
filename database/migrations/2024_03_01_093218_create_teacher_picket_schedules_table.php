@@ -11,15 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('course_schedules', function (Blueprint $table) {
+        Schema::create('teacher_picket_schedules', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('class_id');
-            $table->string("kode_rombel");
-            $table->string("pelajaran");
-            $table->time('waktu_mulai');
-            $table->time('waktu_selesai');
-            $table->string("ruang");
-            $table->string("keterangan");
             $table->timestamps();
         });
     }
@@ -29,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('course_schedules');
+        Schema::dropIfExists('teacher_picket_schedules');
     }
 };

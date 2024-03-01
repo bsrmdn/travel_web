@@ -18,10 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [CourseScheduleController::class, 'index'])->name('home');
 
-
-// kode rombel | pembelanjaean | waktu | ruang | status
-// VII - BIN - B
 Auth::routes();
 
 Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'index'])->name('login');
-Route::get('/dashboard', [HomeController::class, 'index']);
+Route::get('/dashboard', [HomeController::class, 'index'])->middleware('auth');
