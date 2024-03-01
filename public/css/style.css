@@ -1,0 +1,14 @@
+/* Custom CSS */
+
+.text-center {
+    text-align: center;
+}
+
+.display-3 {
+    font-size: 3rem; /* Sesuaikan dengan ukuran yang diinginkan */
+}
+
+.lead {
+    font-size: 1.25rem; /* Sesuaikan dengan ukuran yang diinginkan */
+    margin-bottom: 20px; /* Atur jarak bawah dari elemen lead */
+}
