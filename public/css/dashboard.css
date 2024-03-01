@@ -1,0 +1,50 @@
+.carousel-item {
+    width: 100%;
+  }
+  
+  .carousel-inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .carousel-control-prev,
+  .carousel-control-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+  }
+  
+  #sponsor,
+  #guru-piket,
+  #jadwal-sholat {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+  }
+  
+  #sponsor,
+  #guru-piket,
+  #jadwal-sholat {
+    height: 30vh; /* Sesuaikan tinggi dengan preferensi Anda, misalnya 30% dari tinggi viewport */
+    overflow-y: auto; /* Tambahkan overflow jika konten melebihi tinggi */
+  }
+  
+  #jadwal-sholat {
+    height: 40vh; /* Tinggi jadwal sholat diubah menjadi 40% */
+  }
+
+  #sponsor h2,
+  #guru-piket h2,
+  #jadwal-sholat h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  #sponsor p,
+  #guru-piket p,
+  #jadwal-sholat p {
+    font-size: 1rem;
+    margin-bottom: 0;
+  }
