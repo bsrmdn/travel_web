@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class ClassGrade extends Model
 {
     use HasFactory;
+
+    public function courseSchedules()
+    {
+        return $this->hasMany(CourseSchedule::class);
+    }
 }
