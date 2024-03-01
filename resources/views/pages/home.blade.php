@@ -28,7 +28,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($courseSchedules as $schedule)
-                                        <tr class="schedule-row">
+                                        <tr class="schedule-row d-none">
                                             <td>{{ $schedule->kode_rombel }}</td>
                                             <td>{{ $schedule->pelajaran }}</td>
                                             <td class="start-time">{{ $schedule->waktu_mulai }}</td>
@@ -37,7 +37,7 @@
                                             <td>{{ $schedule->keterangan }}</td>
                                         </tr>
                                     @endforeach
-                                    <p>{{ now('Asia/Jakarta')->toTimeString() }}</p>
+                                    {{-- <p>{{ now('Asia/Jakarta')->toTimeString() }}</p> --}}
                                 </tbody>
                             </table>
                         </div>

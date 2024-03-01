@@ -33,8 +33,6 @@
 
                     <button class="w-100 btn btn-lg btn-secondary mt-4 fw-bold" type="submit">Login</button>
                 </form>
-                <small class="d-block mt-3">Not Registered? <a href="/register" class="link-secondary">Register
-                        Now!</a></small>
             </div>
         </div>
     </div>
