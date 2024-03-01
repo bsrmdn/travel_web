@@ -3,8 +3,12 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\ClassGrade;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use App\Models\CourseSchedule;
+use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -29,5 +33,22 @@ class DatabaseSeeder extends Seeder
             'keterangan' => "pelajaran selesai"
         ]);
         CourseSchedule::factory(5)->create();
+
+        $tingkatan = ['VII', 'VIII', 'IX'];
+        for ($i = 0; $i < count($tingkatan); $i++) {
+            for ($j = ord('A'); $j <= ord('J'); $j++) {
+                ClassGrade::create([
+                    'tingkatan' => $tingkatan[$i],
+                    'kelas' => chr($j),
+                ]);
+            }
+        }
+
+        User::create([
+            'name' => 'admin',
+            'email' => 'admin@gmail.com',
+            'password' => 'admin',
+            'remember_token' => Str::random(10),
+        ]);
     }
 }

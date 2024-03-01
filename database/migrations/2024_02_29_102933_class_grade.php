@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ClassGrade', function (Blueprint $table) {
+        Schema::create('class_grades', function (Blueprint $table) {
             $table->id();
             $table->enum('tingkatan', ['VII', 'VIII', 'IX']);
             $kelas = [];
@@ -19,6 +19,7 @@ return new class extends Migration
                 $kelas[] = chr($i);
             }
             $table->enum('kelas', $kelas);
+            $table->timestamps();
         });
     }
 
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ClassGrade');
+        Schema::dropIfExists('class_grades');
     }
 };
