@@ -28,17 +28,20 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($courseSchedules as $schedule)
-                                        @if ($schedule->waktu_mulai >= now('Asia/Jakarta')->toTimeString())
+                                        @if (
+                                            $schedule->waktu_mulai <= now('Asia/Jakarta')->toTimeString() &&
+                                                now('Asia/Jakarta')->toTimeString() <= $schedule->waktu_selesai)
+                                            <tr>
+                                                <td>{{ $schedule->kode_rombel }}</td>
+                                                <td>{{ $schedule->pelajaran }}</td>
+                                                <td>{{ $schedule->waktu_mulai }}</td>
+                                                <td>{{ $schedule->waktu_selesai }}</td>
+                                                <td>{{ $schedule->ruang }}</td>
+                                                <td>{{ $schedule->keterangan }}</td>
+                                            </tr>
                                         @endif
-                                        <tr>
-                                            <td>{{ $schedule->kode_rombel }}</td>
-                                            <td>{{ $schedule->pelajaran }}</td>
-                                            <td>{{ $schedule->waktu_mulai }}</td>
-                                            <td>{{ $schedule->waktu_selesai }}</td>
-                                            <td>{{ $schedule->ruang }}</td>
-                                            <td>{{ $schedule->keterangan }}</td>
-                                        </tr>
                                     @endforeach
+                                    <p>{{ now('Asia/Jakarta')->toTimeString() }}</p>
                                 </tbody>
                             </table>
                         </div>

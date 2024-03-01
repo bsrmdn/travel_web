@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
             'kode_rombel' => "XI - BIN - A",
             'pelajaran' => "Bahasa Indonesia - Guru B. ind",
             'waktu_mulai' => "07:40",
-            'waktu_selesai' => "10.40",
+            'waktu_selesai' => "10:40",
             'ruang' => "A - 3.2",
             'keterangan' => "pelajaran selesai"
         ]);
