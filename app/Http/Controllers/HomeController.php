@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CourseSchedule;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // return view('auth.login');
+        $courseSchedules = CourseSchedule::all();
+        return view('pages.dashboard', compact('courseSchedules'));
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CourseScheduleController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -23,3 +24,4 @@ Route::get('/', [CourseScheduleController::class, 'index'])->name('home');
 Auth::routes();
 
 Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'index'])->name('login');
+Route::get('/dashboard', [HomeController::class, 'index']);
