@@ -5,10 +5,14 @@
 .custom-table {
   background-image: url('/img/2.png');
   background-color: rgba(255, 255, 255, 0.162);
-  background-size: 100%;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  opacity: 0.5;
+  /* opacity: 0.5; */
+}
+
+thead {
+  text-align: center;
 }
 
 .carousel-inner {

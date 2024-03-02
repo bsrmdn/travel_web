@@ -20,30 +20,41 @@ $(document).ready(function () {
     }
 });
 
+function currentTime() {
+    let date = new Date();
+    let hh = date.getHours();
+    let mm = date.getMinutes();
+    let ss = date.getSeconds();
+    // let session = "AM";
+
+    // if (hh === 0) {
+    //     hh = 12;
+    // }
+    // if (hh > 12) {
+    //     hh = hh - 12;
+    //     session = "PM";
+    // }
+
+    hh = (hh < 10) ? "0" + hh : hh;
+    mm = (mm < 10) ? "0" + mm : mm;
+    ss = (ss < 10) ? "0" + ss : ss;
+
+    let time = hh + ":" + mm + ":" + ss;
+
+    return time;
+}
+
+function currentFullDate() {
+    let date = new Date();
+    let dd = date.getDate();
+    let mm = date.getMonth() + 1;
+    let yy = date.getFullYear();
+
+    let fullDate = dd + '-' + mm + '-' + yy;
+    return fullDate;
+}
+
 function checkSchedule() {
-    function currentTime() {
-        let date = new Date();
-        let hh = date.getHours();
-        let mm = date.getMinutes();
-        let ss = date.getSeconds();
-        // let session = "AM";
-
-        // if (hh === 0) {
-        //     hh = 12;
-        // }
-        // if (hh > 12) {
-        //     hh = hh - 12;
-        //     session = "PM";
-        // }
-
-        hh = (hh < 10) ? "0" + hh : hh;
-        mm = (mm < 10) ? "0" + mm : mm;
-        ss = (ss < 10) ? "0" + ss : ss;
-
-        let time = hh + ":" + mm + ":" + ss;
-
-        return time;
-    }
 
     let scheduleRows = document.getElementsByClassName('schedule-row');
 
@@ -67,7 +78,7 @@ navigator.geolocation.getCurrentPosition(function (position) {
     const longitude = position.coords.longitude;
 
     // Mendapatkan waktu sholat berdasarkan koordinat
-    fetch(`https://api.aladhan.com/v1/timings?latitude=${latitude}&longitude=${longitude}&method=2`)
+    fetch(`https://api.aladhan.com/v1/timingsByAddress/` + currentFullDate() + `?address=Sukoharjo Central Java, Indonesia`)
         .then(response => response.json())
         .then(data => {
             const jadwalSholat = data.data.timings;
@@ -84,15 +95,19 @@ navigator.geolocation.getCurrentPosition(function (position) {
             // Ambil waktu sekarang
             const waktuSekarang = new Date();
             const waktuSekarangMillis = waktuSekarang.getTime();
+            const tanggalSekarang = new Date().toLocaleString('default', { month: 'long' }) + ` ` + waktuSekarang.getDate() + `, ` + waktuSekarang.getFullYear();
 
             // Tampilkan data jadwal sholat lima waktu
             const waktuSholatContainer = document.querySelector('.waktu-sholat');
             for (const [key, value] of Object.entries(waktuSholatLimaWaktu)) {
                 // Ubah format waktu sholat menjadi objek Date
-                const waktuSholatMillis = new Date(`January 1, 1970 ${value}`).getTime();
+                const waktuSholatMillis = new Date(`${tanggalSekarang} ${value}`).getTime();
 
                 // Jika waktu sholat sudah lewat, tambahkan kelas waktu-lewat
                 const waktuLebihDulu = waktuSholatMillis < waktuSekarangMillis ? ' waktu-lewat' : '';
+                const waktuSholatAkanDatang = waktuSholatMillis > waktuSekarangMillis;
+                console.log('waktuSekarangMillis: ', waktuSekarangMillis);
+                console.log('waktuSholatMillis: ', waktuSholatMillis);
 
                 // Ganti teks bahasa Inggris dengan terjemahan ke bahasa Indonesia
                 let translatedKey;
@@ -123,7 +138,7 @@ navigator.geolocation.getCurrentPosition(function (position) {
                 waktuSholatContainer.appendChild(waktuSholatItem);
 
                 // Hentikan loop setelah menemukan waktu sholat yang belum lewat
-                break;
+                if (waktuSholatAkanDatang) break;
             }
         })
         .catch(error => console.error('Error:', error));
@@ -132,11 +147,11 @@ navigator.geolocation.getCurrentPosition(function (position) {
 // KALENDER & WAKTU SEKARANG
 // Fungsi untuk menampilkan waktu sekarang
 function tampilkanWaktuSekarang() {
-    const waktuSekarang = new Date();
-    const jam = waktuSekarang.getHours();
-    const menit = waktuSekarang.getMinutes();
-    const detik = waktuSekarang.getSeconds();
-    document.getElementById('jam-sekarang').textContent = `${jam}:${menit}:${detik}`;
+    // const waktuSekarang = new Date();
+    // const jam = waktuSekarang.getHours();
+    // const menit = waktuSekarang.getMinutes();
+    // const detik = waktuSekarang.getSeconds();
+    document.getElementById('jam-sekarang').textContent = currentTime();
 }
 
 // Fungsi untuk menampilkan kalender Masehi

@@ -9,91 +9,52 @@
             </div>
         </div>
     </header>
-    {{-- <p>{{ now('Asia/Jakarta')->toTimeString() }}</p> --}}
     <div class="row px-3">
         <div class="col custom-table p-1">
             <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    {{-- @for ($i = 0; $i < 3; $i++) --}}
-                    <div class="carousel-item active">
-                        <table class="table opacity-75">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Kode Rombel</th>
-                                    <th scope="col">Pelajaran</th>
-                                    <th scope="col">Waktu Mulai</th>
-                                    <th scope="col">Waktu Selesai</th>
-                                    <th scope="col">Ruang</th>
-                                    <th scope="col">Keterangan</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($courseSchedules->whereBetween('id_kelas', [0, 10]) as $schedule)
-                                    <tr class="schedule-row d-none">
-                                        <td>{{ $schedule->kode_rombel }}</td>
-                                        <td>{{ $schedule->pelajaran }}</td>
-                                        <td class="start-time">{{ $schedule->waktu_mulai }}</td>
-                                        <td class="end-time">{{ $schedule->waktu_selesai }}</td>
-                                        <td>{{ $schedule->ruang }}</td>
-                                        <td>{{ $schedule->keterangan }}</td>
+                    @for ($i = 1; $i <= 3; $i++)
+                        <div class="carousel-item @if ($i == 1) active @endif">
+                            <table class="table table-dark">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Kode Rombel</th>
+                                        <th scope="col">Pelajaran</th>
+                                        <th scope="col">Waktu Mulai</th>
+                                        <th scope="col">Waktu Selesai</th>
+                                        <th scope="col">Ruang</th>
+                                        <th scope="col">Keterangan</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="carousel-item">
-                        <table class="table opacity-75">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Kode Rombel</th>
-                                    <th scope="col">Pelajaran</th>
-                                    <th scope="col">Waktu Mulai</th>
-                                    <th scope="col">Waktu Selesai</th>
-                                    <th scope="col">Ruang</th>
-                                    <th scope="col">Keterangan</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($courseSchedules->whereBetween('id_kelas', [11, 20]) as $schedule)
-                                    <tr class="schedule-row d-none">
-                                        <td scope="row">{{ $schedule->kode_rombel }}</td>
-                                        <td>{{ $schedule->pelajaran }}</td>
-                                        <td class="start-time">{{ $schedule->waktu_mulai }}</td>
-                                        <td class="end-time">{{ $schedule->waktu_selesai }}</td>
-                                        <td>{{ $schedule->ruang }}</td>
-                                        <td>{{ $schedule->keterangan }}</td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="carousel-item">
-                        <table class="table opacity-75">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Kode Rombel</th>
-                                    <th scope="col">Pelajaran</th>
-                                    <th scope="col">Waktu Mulai</th>
-                                    <th scope="col">Waktu Selesai</th>
-                                    <th scope="col">Ruang</th>
-                                    <th scope="col">Keterangan</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($courseSchedules->whereBetween('id_kelas', [21, 30]) as $schedule)
-                                    <tr class="schedule-row d-none">
-                                        <td scope="row">{{ $schedule->kode_rombel }}</td>
-                                        <td>{{ $schedule->pelajaran }}</td>
-                                        <td class="start-time">{{ $schedule->waktu_mulai }}</td>
-                                        <td class="end-time">{{ $schedule->waktu_selesai }}</td>
-                                        <td>{{ $schedule->ruang }}</td>
-                                        <td>{{ $schedule->keterangan }}</td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                    {{-- @endfor --}}
+                                </thead>
+                                <tbody>
+                                    @php
+                                        $kelas = [];
+                                        switch ($i) {
+                                            case 1:
+                                                $kelas = [0, 10];
+                                                break;
+                                            case 2:
+                                                $kelas = [11, 20];
+                                                break;
+                                            default:
+                                                $kelas = [21, 30];
+                                                break;
+                                        }
+                                    @endphp
+                                    @foreach ($courseSchedules->whereBetween('id_kelas', $kelas) as $schedule)
+                                        <tr class="schedule-row d-none">
+                                            <td>{{ $schedule->kode_rombel }}</td>
+                                            <td>{{ $schedule->pelajaran }}</td>
+                                            <td class="start-time">{{ $schedule->waktu_mulai }}</td>
+                                            <td class="end-time">{{ $schedule->waktu_selesai }}</td>
+                                            <td>{{ $schedule->ruang }}</td>
+                                            <td>{{ $schedule->keterangan }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    @endfor
                 </div>
             </div>
         </div>
@@ -121,22 +82,22 @@
                 </div>
                 <div id="jadwal-sholat">
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-8">
                             <div id="sholat">Jadwal Sholat</div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-4">
                             <div class="waktu-item">
                                 <strong></strong> <span id="jam-sekarang"></span>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-6">
                             <div class="waktu-sholat">
                                 <!-- Data jadwal sholat lima waktu akan ditampilkan di sini -->
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-6">
                             <div class="waktu-sekarang">
                                 <div class="kalender-item">
                                     <strong>Masehi:</strong> <span id="kalender-masehi"></span>
