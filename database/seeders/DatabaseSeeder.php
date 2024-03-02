@@ -24,17 +24,18 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        CourseSchedule::create([
-            'kode_rombel' => "XI - BIN - A",
-            'pelajaran' => "Bahasa Indonesia - Guru B. ind",
-            'waktu_mulai' => "07:40",
-            'waktu_selesai' => "09:51",
-            'ruang' => "A - 3.2",
-            'keterangan' => "pelajaran selesai"
-        ]);
-        CourseSchedule::factory(5)->create();
-
         $tingkatan = ['VII', 'VIII', 'IX'];
+        // $waktu_mulai = fake()->time();
+        // CourseSchedule::create([
+        //     'kode_rombel' => fake()->randomElement($tingkatan) + " - BIN - A",
+        //     'pelajaran' => "Bahasa Indonesia - Guru B. ind",
+        //     'waktu_mulai' => $waktu_mulai,
+        //     'waktu_selesai' => "09:51",
+        //     'ruang' => "A - 3.2",
+        //     'keterangan' => "pelajaran selesai"
+        // ]);
+        CourseSchedule::factory(30)->create();
+
         for ($i = 0; $i < count($tingkatan); $i++) {
             for ($j = ord('A'); $j <= ord('J'); $j++) {
                 ClassGrade::create([

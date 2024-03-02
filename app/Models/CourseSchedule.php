@@ -9,8 +9,10 @@ class CourseSchedule extends Model
 {
     use HasFactory;
 
-    // public function classGrade()
-    // {
-    //     return $this->belongsTo(ClassGrade::class, 'class_id');
-    // }
+    protected $with = ['classGrade'];
+
+    public function classGrade()
+    {
+        return $this->belongsTo(ClassGrade::class, 'kelas_id');
+    }
 }

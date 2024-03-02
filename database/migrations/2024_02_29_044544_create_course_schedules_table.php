@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('course_schedules', function (Blueprint $table) {
             $table->id();
-            // $table->foreignId('class_id');
+            $table->foreignId('id_kelas');
             $table->string("kode_rombel");
             $table->string("pelajaran");
             $table->time('waktu_mulai');

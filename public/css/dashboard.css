@@ -1,80 +1,89 @@
 .carousel-item {
-    width: 100%;
-  }
-  
-  .custom-table {
-    background-image: url('/img/2.png');
-    background-color: rgba(255, 255, 255, 0.162); 
-    background-size: 98% 98%;  
-    background-repeat: no-repeat; 
-    background-position: center center;
-    opacity: 0.5; 
+  width: 100%;
 }
-  .carousel-inner {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-  }
-  
-  .carousel-control-prev,
-  .carousel-control-next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10;
-  }
-  
-  #sponsor,
-  #guru-piket,
-  #jadwal-sholat {
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 15px;
-  }
 
- /* Atur tinggi slider agar pas dengan card sponsor */
- .slider {
-  height: 26vh; /* Atur tinggi slider sesuai dengan tinggi card sponsor */
-  overflow: hidden; /* Pastikan konten dalam slider tidak keluar dari card */
+.custom-table {
+  background-image: url('/img/2.png');
+  background-color: rgba(255, 255, 255, 0.162);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  opacity: 0.5;
+}
+
+.carousel-inner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+#sponsor,
+#guru-piket,
+#jadwal-sholat {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+}
+
+/* Atur tinggi slider agar pas dengan card sponsor */
+.slider {
+  height: 26vh;
+  /* Atur tinggi slider sesuai dengan tinggi card sponsor */
+  overflow: hidden;
+  /* Pastikan konten dalam slider tidak keluar dari card */
 }
 
 /* Atur ukuran maksimum video dan gambar */
-.slider video, .slider img {
-  max-width: 100%; /* Sesuaikan ukuran maksimum dengan lebar container */
-  max-height: 100%; /* Sesuaikan ukuran maksimum dengan tinggi container */
+.slider video,
+.slider img {
+  max-width: 100%;
+  /* Sesuaikan ukuran maksimum dengan lebar container */
+  max-height: 100%;
+  /* Sesuaikan ukuran maksimum dengan tinggi container */
   width: auto;
   height: auto;
 }
 
-  #sponsor,
-  #guru-piket,
-  #jadwal-sholat {
-    height: 30vh; /* Sesuaikan tinggi dengan preferensi Anda, misalnya 30% dari tinggi viewport */
-    overflow-y: auto; /* Tambahkan overflow jika konten melebihi tinggi */
-  }
-  
-  #jadwal-sholat {
-    height: 20vh; /* Tinggi jadwal sholat diubah menjadi 40% */
-  }
+#sponsor,
+#guru-piket,
+#jadwal-sholat {
+  height: 30vh;
+  /* Sesuaikan tinggi dengan preferensi Anda, misalnya 30% dari tinggi viewport */
+  overflow-y: auto;
+  /* Tambahkan overflow jika konten melebihi tinggi */
+}
 
-  #sponsor h2,
-  #guru-piket h2,
-  #jadwal-sholat h2 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-  }
-  
-  #sponsor p,
-  #guru-piket p,
-  #jadwal-sholat p {
-    font-size: 1rem;
-    margin-bottom: 0;
-  }
+#jadwal-sholat {
+  height: 20vh;
+  /* Tinggi jadwal sholat diubah menjadi 40% */
+}
+
+#sponsor h2,
+#guru-piket h2,
+#jadwal-sholat h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+#sponsor p,
+#guru-piket p,
+#jadwal-sholat p {
+  font-size: 1rem;
+  margin-bottom: 0;
+}
 
 
 #sholat {
-    font-size: 30px;
-    margin-bottom: 10px;
+  font-size: 30px;
+  margin-bottom: 10px;
 }
 
 .waktu-sholat {
@@ -87,7 +96,7 @@
   margin-left: 100px;
 }
 
-#jam-sekarang{
+#jam-sekarang {
   font-size: 30px;
   margin-top: 20px;
 }

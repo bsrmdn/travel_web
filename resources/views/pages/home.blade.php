@@ -1,15 +1,5 @@
 @extends('layouts.app')
 @section('content')
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- Link ke file CSS -->
-    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css"/>    
-  </head>
-<body>
     <header>
         <div class="row">
             <div class="col">
@@ -19,39 +9,91 @@
             </div>
         </div>
     </header>
+    {{-- <p>{{ now('Asia/Jakarta')->toTimeString() }}</p> --}}
     <div class="row px-3">
-        <div class="col custom-table">
+        <div class="col custom-table p-1">
             <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    @for ($i = 0; $i < 3; $i++)
-                        <div class="carousel-item active">
-                            <table class="table pb-3">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Kode Rombel</th>
-                                        <th scope="col">Pelajaran</th>
-                                        <th scope="col">Waktu Mulai</th>
-                                        <th scope="col">Waktu Selesai</th>
-                                        <th scope="col">Ruang</th>
-                                        <th scope="col">Keterangan</th>
+                    {{-- @for ($i = 0; $i < 3; $i++) --}}
+                    <div class="carousel-item active">
+                        <table class="table opacity-75">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Kode Rombel</th>
+                                    <th scope="col">Pelajaran</th>
+                                    <th scope="col">Waktu Mulai</th>
+                                    <th scope="col">Waktu Selesai</th>
+                                    <th scope="col">Ruang</th>
+                                    <th scope="col">Keterangan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($courseSchedules->whereBetween('id_kelas', [0, 10]) as $schedule)
+                                    <tr class="schedule-row d-none">
+                                        <td>{{ $schedule->kode_rombel }}</td>
+                                        <td>{{ $schedule->pelajaran }}</td>
+                                        <td class="start-time">{{ $schedule->waktu_mulai }}</td>
+                                        <td class="end-time">{{ $schedule->waktu_selesai }}</td>
+                                        <td>{{ $schedule->ruang }}</td>
+                                        <td>{{ $schedule->keterangan }}</td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($courseSchedules as $schedule)
-                                        <tr class="schedule-row d-none">
-                                            <td>{{ $schedule->kode_rombel }}</td>
-                                            <td>{{ $schedule->pelajaran }}</td>
-                                            <td class="start-time">{{ $schedule->waktu_mulai }}</td>
-                                            <td class="end-time">{{ $schedule->waktu_selesai }}</td>
-                                            <td>{{ $schedule->ruang }}</td>
-                                            <td>{{ $schedule->keterangan }}</td>
-                                        </tr>
-                                    @endforeach
-                                    {{-- <p>{{ now('Asia/Jakarta')->toTimeString() }}</p> --}}
-                                </tbody>
-                            </table>
-                        </div>
-                    @endfor
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="carousel-item">
+                        <table class="table opacity-75">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Kode Rombel</th>
+                                    <th scope="col">Pelajaran</th>
+                                    <th scope="col">Waktu Mulai</th>
+                                    <th scope="col">Waktu Selesai</th>
+                                    <th scope="col">Ruang</th>
+                                    <th scope="col">Keterangan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($courseSchedules->whereBetween('id_kelas', [11, 20]) as $schedule)
+                                    <tr class="schedule-row d-none">
+                                        <td scope="row">{{ $schedule->kode_rombel }}</td>
+                                        <td>{{ $schedule->pelajaran }}</td>
+                                        <td class="start-time">{{ $schedule->waktu_mulai }}</td>
+                                        <td class="end-time">{{ $schedule->waktu_selesai }}</td>
+                                        <td>{{ $schedule->ruang }}</td>
+                                        <td>{{ $schedule->keterangan }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="carousel-item">
+                        <table class="table opacity-75">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Kode Rombel</th>
+                                    <th scope="col">Pelajaran</th>
+                                    <th scope="col">Waktu Mulai</th>
+                                    <th scope="col">Waktu Selesai</th>
+                                    <th scope="col">Ruang</th>
+                                    <th scope="col">Keterangan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($courseSchedules->whereBetween('id_kelas', [21, 30]) as $schedule)
+                                    <tr class="schedule-row d-none">
+                                        <td scope="row">{{ $schedule->kode_rombel }}</td>
+                                        <td>{{ $schedule->pelajaran }}</td>
+                                        <td class="start-time">{{ $schedule->waktu_mulai }}</td>
+                                        <td class="end-time">{{ $schedule->waktu_selesai }}</td>
+                                        <td>{{ $schedule->ruang }}</td>
+                                        <td>{{ $schedule->keterangan }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    {{-- @endfor --}}
                 </div>
             </div>
         </div>
@@ -116,150 +158,4 @@
             </div>
         </footer>
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-    <script>
-       $(document).ready(function(){
-        var slider = $('.slider');
-        var video = slider.find('video');
-
-        video.on('loadedmetadata', function() {
-            var videoDuration = this.duration * 1000; // Durasi video dalam milidetik
-            slider.slick({
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                autoplay: true,
-                autoplaySpeed: videoDuration,
-                pauseOnFocus: false,
-                pauseOnHover: false,
-                pauseOnDotsHover: false
-            });
-        });
-
-        function nextSlide() {
-            slider.slick('slickNext'); // Pindah ke slide berikutnya setelah video selesai diputar
-        }
-    });
-    // JADWAL SHOLAT
-    navigator.geolocation.getCurrentPosition(function(position) {
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude;
-    
-    // Mendapatkan waktu sholat berdasarkan koordinat
-    fetch(`https://api.aladhan.com/v1/timings?latitude=${latitude}&longitude=${longitude}&method=2`)
-        .then(response => response.json())
-        .then(data => {
-            const jadwalSholat = data.data.timings;
-
-            // Filter dan ambil hanya waktu sholat lima waktu
-            const waktuSholatLimaWaktu = {
-                'Subuh': jadwalSholat.Fajr,
-                'Dzuhur': jadwalSholat.Dhuhr,
-                'Ashar': jadwalSholat.Asr,
-                'Maghrib': jadwalSholat.Maghrib,
-                'Isya': jadwalSholat.Isha
-            };
-
-            // Ambil waktu sekarang
-            const waktuSekarang = new Date();
-            const waktuSekarangMillis = waktuSekarang.getTime();
-
-            // Tampilkan data jadwal sholat lima waktu
-            const waktuSholatContainer = document.querySelector('.waktu-sholat');
-            for (const [key, value] of Object.entries(waktuSholatLimaWaktu)) {
-                // Ubah format waktu sholat menjadi objek Date
-                const waktuSholatMillis = new Date(`January 1, 1970 ${value}`).getTime();
-
-                // Jika waktu sholat sudah lewat, tambahkan kelas waktu-lewat
-                const waktuLebihDulu = waktuSholatMillis < waktuSekarangMillis ? ' waktu-lewat' : '';
-
-                // Ganti teks bahasa Inggris dengan terjemahan ke bahasa Indonesia
-                let translatedKey;
-                switch(key) {
-                    case 'Fajr':
-                        translatedKey = 'Subuh';
-                        break;
-                    case 'Dhuhr':
-                        translatedKey = 'Dzuhur';
-                        break;
-                    case 'Asr':
-                        translatedKey = 'Ashar';
-                        break;
-                    case 'Maghrib':
-                        translatedKey = 'Maghrib';
-                        break;
-                    case 'Isha':
-                        translatedKey = 'Isya';
-                        break;
-                    default:
-                        translatedKey = key;
-                }
-
-                // Tampilkan waktu sholat
-                const waktuSholatItem = document.createElement('div');
-                waktuSholatItem.className = `waktu-sholat-item${waktuLebihDulu}`;
-                waktuSholatItem.innerHTML = `<strong>${translatedKey}:</strong> ${value}`;
-                waktuSholatContainer.appendChild(waktuSholatItem);
-
-                // Hentikan loop setelah menemukan waktu sholat yang belum lewat
-                break;
-            }
-        })
-        .catch(error => console.error('Error:', error));
-});
-        // KALENDER & WAKTU SEKARANG
-         // Fungsi untuk menampilkan waktu sekarang
-    function tampilkanWaktuSekarang() {
-        const waktuSekarang = new Date();
-        const jam = waktuSekarang.getHours();
-        const menit = waktuSekarang.getMinutes();
-        const detik = waktuSekarang.getSeconds();
-        document.getElementById('jam-sekarang').textContent = `${jam}:${menit}:${detik}`;
-    }
-
-    // Fungsi untuk menampilkan kalender Masehi
-    function tampilkanKalenderMasehi() {
-        const waktuSekarang = new Date();
-        const tahun = waktuSekarang.getFullYear();
-        const bulan = waktuSekarang.getMonth() + 1;
-        const tanggal = waktuSekarang.getDate();
-        document.getElementById('kalender-masehi').textContent = `${tanggal}/${bulan}/${tahun}`;
-    }
-
-    // Fungsi untuk menampilkan kalender Hijriah
-    function tampilkanKalenderHijriah() {
-        fetch('https://api.aladhan.com/v1/gToH?date=02-03-2024')
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('kalender-hijriah').textContent = data.data.hijri.date;
-            })
-            .catch(error => console.error('Error:', error));
-    }
-
-    // Panggil fungsi-fungsi untuk menampilkan waktu sekarang dan kalender
-    tampilkanWaktuSekarang();
-    tampilkanKalenderMasehi();
-    tampilkanKalenderHijriah();
-
-    // Perbarui waktu setiap detik
-    setInterval(function() {
-        tampilkanWaktuSekarang();
-    }, 1000);
-</script>
-    {{-- <script>
-        fetch('/')
-            .then(response => response.json())
-            .then(data => {
-                const currentTime = new Date();
-                const filteredSchedules = data.filter(schedule => {
-                    const departureTime = new Date(schedule.departure_time);
-                    return departureTime > currentTime;
-                });
-
-                // Lakukan sesuatu dengan filteredSchedules, misalnya menampilkan dalam tabel HTML
-                console.log(filteredSchedules);
-            })
-            .catch(error => console.error('Error:', error));
-    </script> --}}
-</body>
 @endsection
