@@ -1,3 +1,5 @@
+
+
 .carousel-item {
   width: 100%;
 }
@@ -65,12 +67,12 @@ thead {
   /* Tambahkan overflow jika konten melebihi tinggi */
 }
 #guru-piket{
-  height: 44vh;
+  height: 25vh;
 }
 #jadwal-sholat {
   height: 20vh;
   max-width: 100%;
-  margin-left: 10px;
+  margin-left: 0px;
   /* Tinggi jadwal sholat diubah menjadi 40% */
 }
 
@@ -88,50 +90,44 @@ thead {
   margin-bottom: 0;
 }
 
-#sholat{
-  font-size: 30px;
-  text-align: center;
+
+#jadwal-sholat {
+  background-color: #f8f9fa; /* Warna latar belakang */
+  padding: 20px; /* Padding agar konten tidak terlalu dekat dengan tepi */
+  border-radius: 8px;
+  overflow: hidden; /* Membuat sudut elemen agak melengkung */
+}
+
+#sholat {
+  font-size: 24px; /* Ukuran font untuk judul jadwal sholat */
+  font-weight: bold; /* Membuat judul lebih menonjol */
 }
 
 .waktu-sholat {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  margin-top: 10px; /* Jarak antara judul dan waktu sholat */
 }
 
-.waktu-sholat-item {
-  flex-basis: calc(50% - 10px); /* Mengatur lebar agar 50% dan memberikan jarak antara elemen */
-  margin-bottom: 10px;
-  padding: 10px;
-  background-color: #ffffff;
-  border-radius: 3px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+.waktu-item {
+  margin-bottom: 15px; /* Jarak antara item waktu dengan item lainnya */
 }
 
-.waktu-lewat {
-  color: #dc3545;
+.waktu-item strong {
+  display: block; /* Membuat teks judul menjadi blok untuk memudahkan penataan */
 }
-
-.waktu-akan-datang {
-  color: #28a745;
-}
-
-.waktu-sholat-item strong {
-  margin-right: 10px;
-}
-
 
 .kalender-item {
-  margin-bottom: 10px;
-  font-size: 18px;
-  margin-left: 50px;
+  margin-top: 5px; /* Jarak antara item kalender */
 }
+
+.kalender-item strong {
+  margin-right: 5px; /* Jarak antara judul dan nilainya */
+}
+
 
 #jam-sekarang {
   font-size: 30px;
   margin-top: 20px;
-  margin-left: 50px;
+  margin-left: 0px;
 }
 
 .waktu-lewat {
