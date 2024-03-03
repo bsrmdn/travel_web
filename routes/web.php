@@ -27,4 +27,6 @@ Auth::routes();
 
 Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'index'])->name('login');
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
+Route::post('/dashboard', [DashboardController::class, 'store'])->middleware('auth')->name('dashboard');
 Route::delete('/dashboard/{courseSchedule:id}', [DashboardController::class, 'destroy'])->middleware('auth');
+Route::put('/dashboard/{courseSchedule:id}', [DashboardController::class, 'update'])->middleware('auth');

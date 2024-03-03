@@ -9,6 +9,7 @@ class CourseSchedule extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
     protected $with = ['classGrade'];
 
     public function classGrade()

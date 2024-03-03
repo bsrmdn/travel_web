@@ -20,7 +20,7 @@ $(document).ready(function () {
     }
 });
 
-function currentTime() {
+var currentTime = () => {
     let date = new Date();
     let hh = date.getHours();
     let mm = date.getMinutes();
@@ -166,4 +166,4 @@ setInterval(function () {
     tampilkanWaktuSekarang();
 }, 1000);
 
-export { currentTime };
+// export { currentTime };

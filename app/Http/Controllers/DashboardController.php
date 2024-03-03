@@ -31,7 +31,26 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'id_kelas' => 'required',
+            'pelajaran' => 'required',
+            "waktu_mulai" => "required",
+            "waktu_selesai" => "required",
+            "ruang" => "required",
+            'keterangan' => 'nullable|string'
+        ]);
+
+        if (!$validatedData['keterangan'] == null) {
+            $validatedData['keterangan'] = '';
+        }
+
+        $class = ClassGrade::where('id', $request->input('id_kelas'));
+        $validatedData['kode_rombel'] = $class->value('tingkatan') . ' - MPL - ' . $class->value('kelas');
+
+        CourseSchedule::create($validatedData);
+
+        return redirect('/dashboard')->with('success', 'Your book has been updated!');
+        // return $validatedData;
     }
 
     /**
@@ -55,7 +74,20 @@ class DashboardController extends Controller
      */
     public function update(Request $request, CourseSchedule $courseSchedule)
     {
-        //
+        $validatedData = $request->validate([
+            'pelajaran' => 'required',
+            "waktu_mulai" => "required",
+            "waktu_selesai" => "required",
+            "ruang" => "required",
+            "keterangan" => 'nullable'
+        ]);
+
+        $class = ClassGrade::where('id', $request->input('id_kelas'));
+        $validatedData['kode_rombel'] = $class->value('tingkatan') . ' - MPL - ' . $class->value('kelas');
+
+        CourseSchedule::where('id', $courseSchedule->id)->update($validatedData);
+
+        return redirect('/dashboard')->with('success', 'Your book has been updated!');
     }
 
     /**

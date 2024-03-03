@@ -19,7 +19,7 @@ return new class extends Migration
             $table->time('waktu_mulai');
             $table->time('waktu_selesai');
             $table->string("ruang");
-            $table->string("keterangan");
+            $table->string("keterangan")->nullable();
             $table->timestamps();
         });
     }

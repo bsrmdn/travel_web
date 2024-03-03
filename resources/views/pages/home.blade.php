@@ -1,5 +1,19 @@
 @extends('layouts.app')
 @section('content')
+<head>
+    <style>
+    body {
+    max-width: 100%;
+    margin: 0 auto; 
+    }
+    body {
+    max-height: 100%; 
+    }
+    body {
+    overflow: hidden;
+    }
+    </style>
+</head>
     <header>
         <div class="row">
             <div class="col">

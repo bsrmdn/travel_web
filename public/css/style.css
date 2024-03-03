@@ -5,10 +5,17 @@
 }
 
 .display-3 {
-    font-size: 3rem; /* Sesuaikan dengan ukuran yang diinginkan */
+    font-size: 3rem;
+    /* Sesuaikan dengan ukuran yang diinginkan */
 }
 
 .lead {
-    font-size: 1.25rem; /* Sesuaikan dengan ukuran yang diinginkan */
-    margin-bottom: 20px; /* Atur jarak bawah dari elemen lead */
+    font-size: 1.25rem;
+    /* Sesuaikan dengan ukuran yang diinginkan */
+    margin-bottom: 20px;
+    /* Atur jarak bawah dari elemen lead */
+}
+
+#courseScheduleSection {
+    height: 70vh;
 }
