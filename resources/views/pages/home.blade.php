@@ -18,7 +18,7 @@
         <div class="row">
             <div class="col">
                 <div id="pengumuman" class="p-3">
-                    <marquee bgcolor="red">RUNNING TEXT LATAR KUNING</marquee>
+                    <marquee id="running-text">Loading...</marquee>
                 </div>
             </div>
         </div>
@@ -91,7 +91,47 @@
                 <!-- Bagian Jadwal Guru Piket -->
                 <div id="guru-piket" class="bg-light p-3 mb-3">
                     <h2>Jadwal Guru Piket</h2>
-                    <p>Isi jadwal guru piket disini</p>
+                    @for ($i = 1; $i <= 3; $i++)
+                    <div class="carousel-item @if ($i == 1) active @endif">
+                        <table class="table table-dark">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Kode Rombel</th>
+                                    <th scope="col">Pelajaran</th>
+                                    <th scope="col">Waktu Mulai</th>
+                                    <th scope="col">Waktu Selesai</th>
+                                    <th scope="col">Ruang</th>
+                                    <th scope="col">Keterangan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php
+                                    switch ($i) {
+                                        case 1:
+                                            $kelas = [0, 10];
+                                            break;
+                                        case 2:
+                                            $kelas = [11, 20];
+                                            break;
+                                        default:
+                                            $kelas = [21, 30];
+                                            break;
+                                    }
+                                @endphp
+                                @foreach ($courseSchedules->whereBetween('id_kelas', $kelas) as $schedule)
+                                    <tr class="schedule-row d-none">
+                                        <td>{{ $schedule->kode_rombel }}</td>
+                                        <td>{{ $schedule->pelajaran }}</td>
+                                        <td class="start-time">{{ $schedule->waktu_mulai }}</td>
+                                        <td class="end-time">{{ $schedule->waktu_selesai }}</td>
+                                        <td>{{ $schedule->ruang }}</td>
+                                        <td>{{ $schedule->keterangan }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                @endfor
                 </div>
                 <div id="jadwal-sholat">
                     <div class="row">
@@ -132,4 +172,40 @@
             </div>
         </footer>
     </div>
+    <script>
+        var announcements = [
+            "Pengumuman 1",
+            "Pengumuman 2",
+            "Pengumuman 3",
+            "Pengumuman 4"
+        ];
+    
+        var index = 0;
+        var interval;
+    
+        function changeAnnouncement() {
+            document.getElementById("running-text").innerText = announcements[index];
+            index = (index + 1) % announcements.length;
+            document.getElementById("pengumuman").style.backgroundColor = getRandomColor();
+        }
+    
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+    
+        function startRunningText() {
+            interval = setInterval(changeAnnouncement, 3000); // Ubah setiap 3 detik
+        }
+    
+        function stopRunningText() {
+            clearInterval(interval);
+        }
+    
+        startRunningText(); // Mulai running text secara otomatis saat halaman dimuat
+    </script>
 @endsection

@@ -5,10 +5,7 @@
         <div class="row">
             <div class="col">
                 <div id="pengumuman" class="p-3">
-                    <marquee bgcolor="red">RUNNING TEXT LATAR KUNING</marquee>
-                </div>
-                <div id="logo" class="container-fluid text-center">
-                    <img src="img/Logo-smkmutuharjo.png" alt="Logo Instansi" width="100px">
+                    <marquee id="running-text">Loading...</marquee>
                 </div>
             </div>
         </div>
@@ -297,4 +294,40 @@
             </div>
         </div>
     </div>
+    <script>
+        var announcements = [
+            "Pengumuman 1",
+            "Pengumuman 2",
+            "Pengumuman 3",
+            "Pengumuman 4"
+        ];
+    
+        var index = 0;
+        var interval;
+    
+        function changeAnnouncement() {
+            document.getElementById("running-text").innerText = announcements[index];
+            index = (index + 1) % announcements.length;
+            document.getElementById("pengumuman").style.backgroundColor = getRandomColor();
+        }
+    
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+    
+        function startRunningText() {
+            interval = setInterval(changeAnnouncement, 3000); // Ubah setiap 3 detik
+        }
+    
+        function stopRunningText() {
+            clearInterval(interval);
+        }
+    
+        startRunningText(); // Mulai running text secara otomatis saat halaman dimuat
+    </script>
 @endsection
