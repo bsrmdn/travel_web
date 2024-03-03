@@ -7,6 +7,9 @@
                 <div id="pengumuman" class="p-3">
                     <marquee bgcolor="red">RUNNING TEXT LATAR KUNING</marquee>
                 </div>
+                <div id="logo" class="container-fluid text-center">
+                    <img src="img/Logo-smkmutuharjo.png" alt="Logo Instansi" width="100px">
+                </div>
             </div>
         </div>
     </header>
@@ -49,16 +52,33 @@
                         </div>
                     @endfor
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+                {{-- Jadwal Sholat dll --}}
+                <div class="row">
+                    <div id="jadwal-sholat">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div id="sholat">Jadwal Sholat</div>
+                                <div class="waktu-sholat mt-4">
+                                    <!-- Data jadwal sholat lima waktu akan ditampilkan di sini -->
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="waktu-item">
+                                    <strong></strong> <span id="jam-sekarang"></span>
+                                </div>
+                                <div class="waktu-sekarang">
+                                    <div class="kalender-item">
+                                        <strong>Masehi:</strong> <span id="kalender-masehi"></span>
+                                    </div>
+                                    <div class="kalender-item">
+                                        <strong>Hijriah:</strong> <span id="kalender-hijriah"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{-- END --}}
             </div>
         </div>
         <!-- Bagian Sponsor, Jadwal Guru Piket, dan Jadwal Sholat -->
@@ -83,44 +103,8 @@
                     <h2>Jadwal Guru Piket</h2>
                     <p>Isi jadwal guru piket disini</p>
                 </div>
-                <div id="jadwal-sholat">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div id="sholat">Jadwal Sholat</div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="waktu-item">
-                                <strong></strong> <span id="jam-sekarang"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="waktu-sholat">
-                                <!-- Data jadwal sholat lima waktu akan ditampilkan di sini -->
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="waktu-sekarang">
-                                <div class="kalender-item">
-                                    <strong>Masehi:</strong> <span id="kalender-masehi"></span>
-                                </div>
-                                <div class="kalender-item">
-                                    <strong>Hijriah:</strong> <span id="kalender-hijriah"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </aside>
         </div>
-        <footer>
-            <div class="row">
-                <div class="col">
-                    <p>&copy; 2024 Nama Perusahaan. All rights reserved.</p>
-                </div>
-            </div>
-        </footer>
     </div>
 
 
