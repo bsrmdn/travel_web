@@ -28,7 +28,6 @@
                                 </thead>
                                 <tbody>
                                     @php
-                                        $kelas = [];
                                         switch ($i) {
                                             case 1:
                                                 $kelas = [0, 10];

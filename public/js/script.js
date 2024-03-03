@@ -54,95 +54,78 @@ function currentFullDate() {
     return fullDate;
 }
 
-function checkSchedule() {
-
-    let scheduleRows = document.getElementsByClassName('schedule-row');
-
-    for (let i = 0; i < scheduleRows.length; i++) {
-        let startTime = scheduleRows[i].getElementsByClassName('start-time')[0].innerText;
-        let endTime = scheduleRows[i].getElementsByClassName('end-time')[0].innerText;
-
-        if (startTime <= currentTime() && currentTime() <= endTime) {
-            scheduleRows[i].classList.remove('d-none');
-        } else {
-            scheduleRows[i].classList.add('d-none');
-        }
-    }
-}
-setInterval(checkSchedule, 1000);
-
 
 // JADWAL SHOLAT
-navigator.geolocation.getCurrentPosition(function (position) {
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude;
+// navigator.geolocation.getCurrentPosition(function (position) {
+//     const latitude = position.coords.latitude;
+//     const longitude = position.coords.longitude;
 
-    // Mendapatkan waktu sholat berdasarkan koordinat
-    fetch(`https://api.aladhan.com/v1/timingsByAddress/` + currentFullDate() + `?address=Sukoharjo Central Java, Indonesia`)
-        .then(response => response.json())
-        .then(data => {
-            const jadwalSholat = data.data.timings;
+//     // Mendapatkan waktu sholat berdasarkan koordinat
+// });
+fetch(`https://api.aladhan.com/v1/timingsByAddress/` + currentFullDate() + `?address=Sukoharjo Central Java, Indonesia`)
+    .then(response => response.json())
+    .then(data => {
+        const jadwalSholat = data.data.timings;
 
-            // Filter dan ambil hanya waktu sholat lima waktu
-            const waktuSholatLimaWaktu = {
-                'Subuh': jadwalSholat.Fajr,
-                'Dzuhur': jadwalSholat.Dhuhr,
-                'Ashar': jadwalSholat.Asr,
-                'Maghrib': jadwalSholat.Maghrib,
-                'Isya': jadwalSholat.Isha
-            };
+        // Filter dan ambil hanya waktu sholat lima waktu
+        const waktuSholatLimaWaktu = {
+            'Subuh': jadwalSholat.Fajr,
+            'Dzuhur': jadwalSholat.Dhuhr,
+            'Ashar': jadwalSholat.Asr,
+            'Maghrib': jadwalSholat.Maghrib,
+            'Isya': jadwalSholat.Isha
+        };
 
-            // Ambil waktu sekarang
-            const waktuSekarang = new Date();
-            const waktuSekarangMillis = waktuSekarang.getTime();
-            const tanggalSekarang = new Date().toLocaleString('default', { month: 'long' }) + ` ` + waktuSekarang.getDate() + `, ` + waktuSekarang.getFullYear();
+        // Ambil waktu sekarang
+        const waktuSekarang = new Date();
+        const waktuSekarangMillis = waktuSekarang.getTime();
+        const tanggalSekarang = new Date().toLocaleString('default', { month: 'long' }) + ` ` + waktuSekarang.getDate() + `, ` + waktuSekarang.getFullYear();
 
-            // Tampilkan data jadwal sholat lima waktu
-            const waktuSholatContainer = document.querySelector('.waktu-sholat');
-            for (const [key, value] of Object.entries(waktuSholatLimaWaktu)) {
-                // Ubah format waktu sholat menjadi objek Date
-                const waktuSholatMillis = new Date(`${tanggalSekarang} ${value}`).getTime();
+        // Tampilkan data jadwal sholat lima waktu
+        const waktuSholatContainer = document.querySelector('.waktu-sholat');
+        for (const [key, value] of Object.entries(waktuSholatLimaWaktu)) {
+            // Ubah format waktu sholat menjadi objek Date
+            const waktuSholatMillis = new Date(`${tanggalSekarang} ${value}`).getTime();
 
-                // Jika waktu sholat sudah lewat, tambahkan kelas waktu-lewat
-                const waktuLebihDulu = waktuSholatMillis < waktuSekarangMillis ? ' waktu-lewat' : '';
-                const waktuSholatAkanDatang = waktuSholatMillis > waktuSekarangMillis;
-                console.log('waktuSekarangMillis: ', waktuSekarangMillis);
-                console.log('waktuSholatMillis: ', waktuSholatMillis);
+            // Jika waktu sholat sudah lewat, tambahkan kelas waktu-lewat
+            const waktuLebihDulu = waktuSholatMillis < waktuSekarangMillis ? ' waktu-lewat' : '';
+            const waktuSholatAkanDatang = waktuSholatMillis > waktuSekarangMillis;
+            console.log('waktuSekarangMillis: ', waktuSekarangMillis);
+            console.log('waktuSholatMillis: ', waktuSholatMillis);
 
-                // Ganti teks bahasa Inggris dengan terjemahan ke bahasa Indonesia
-                let translatedKey;
-                switch (key) {
-                    case 'Fajr':
-                        translatedKey = 'Subuh';
-                        break;
-                    case 'Dhuhr':
-                        translatedKey = 'Dzuhur';
-                        break;
-                    case 'Asr':
-                        translatedKey = 'Ashar';
-                        break;
-                    case 'Maghrib':
-                        translatedKey = 'Maghrib';
-                        break;
-                    case 'Isha':
-                        translatedKey = 'Isya';
-                        break;
-                    default:
-                        translatedKey = key;
-                }
-
-                // Tampilkan waktu sholat
-                const waktuSholatItem = document.createElement('div');
-                waktuSholatItem.className = `waktu-sholat-item${waktuLebihDulu}`;
-                waktuSholatItem.innerHTML = `<strong>${translatedKey}:</strong> ${value}`;
-                waktuSholatContainer.appendChild(waktuSholatItem);
-
-                // Hentikan loop setelah menemukan waktu sholat yang belum lewat
-                if (waktuSholatAkanDatang) break;
+            // Ganti teks bahasa Inggris dengan terjemahan ke bahasa Indonesia
+            let translatedKey;
+            switch (key) {
+                case 'Fajr':
+                    translatedKey = 'Subuh';
+                    break;
+                case 'Dhuhr':
+                    translatedKey = 'Dzuhur';
+                    break;
+                case 'Asr':
+                    translatedKey = 'Ashar';
+                    break;
+                case 'Maghrib':
+                    translatedKey = 'Maghrib';
+                    break;
+                case 'Isha':
+                    translatedKey = 'Isya';
+                    break;
+                default:
+                    translatedKey = key;
             }
-        })
-        .catch(error => console.error('Error:', error));
-});
+
+            // Tampilkan waktu sholat
+            const waktuSholatItem = document.createElement('div');
+            waktuSholatItem.className = `waktu-sholat-item${waktuLebihDulu}`;
+            waktuSholatItem.innerHTML = `<strong>${translatedKey}:</strong> ${value}`;
+            waktuSholatContainer.appendChild(waktuSholatItem);
+
+            // Hentikan loop setelah menemukan waktu sholat yang belum lewat
+            if (waktuSholatAkanDatang) break;
+        }
+    })
+    .catch(error => console.error('Error:', error));
 
 // KALENDER & WAKTU SEKARANG
 // Fungsi untuk menampilkan waktu sekarang
@@ -182,3 +165,5 @@ tampilkanKalenderHijriah();
 setInterval(function () {
     tampilkanWaktuSekarang();
 }, 1000);
+
+export { currentTime };

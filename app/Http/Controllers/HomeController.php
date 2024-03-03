@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ClassGrade;
 use App\Models\CourseSchedule;
 use Illuminate\Http\Request;
 
@@ -25,6 +26,15 @@ class HomeController extends Controller
     public function index()
     {
         $courseSchedules = CourseSchedule::all();
-        return view('pages.dashboard', compact('courseSchedules'));
+        $grades = ClassGrade::all();
+        return view('pages.dashboard', compact(['courseSchedules', 'grades']));
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(CourseSchedule $courseSchedule)
+    {
+        //
     }
 }
