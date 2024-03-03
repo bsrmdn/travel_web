@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ClassGrade;
 use App\Models\CourseSchedule;
+use App\Models\MataPelajaran;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -15,7 +16,8 @@ class DashboardController extends Controller
     {
         $courseSchedules = CourseSchedule::all();
         $grades = ClassGrade::all();
-        return view('pages.dashboard', compact(['courseSchedules', 'grades']));
+        $mapels = MataPelajaran::all();
+        return view('pages.dashboard', compact(['courseSchedules', 'grades', 'mapels']));
     }
 
     /**
@@ -33,7 +35,7 @@ class DashboardController extends Controller
     {
         $validatedData = $request->validate([
             'id_kelas' => 'required',
-            'pelajaran' => 'required',
+            'id_mapel' => 'required',
             "waktu_mulai" => "required",
             "waktu_selesai" => "required",
             "ruang" => "required",
@@ -44,8 +46,11 @@ class DashboardController extends Controller
             $validatedData['keterangan'] = '';
         }
 
+        $mapel = MataPelajaran::where('id', $request->input('id_mapel'));
+        $validatedData['pelajaran'] = $mapel->value('mapel');
+
         $class = ClassGrade::where('id', $request->input('id_kelas'));
-        $validatedData['kode_rombel'] = $class->value('tingkatan') . ' - MPL - ' . $class->value('kelas');
+        $validatedData['kode_rombel'] = $class->value('tingkatan') . ' - MPL - ' . $mapel->value('kode_mapel');
 
         CourseSchedule::create($validatedData);
 
@@ -75,15 +80,21 @@ class DashboardController extends Controller
     public function update(Request $request, CourseSchedule $courseSchedule)
     {
         $validatedData = $request->validate([
-            'pelajaran' => 'required',
             "waktu_mulai" => "required",
             "waktu_selesai" => "required",
             "ruang" => "required",
-            "keterangan" => 'nullable'
+            'keterangan' => 'nullable|string'
         ]);
 
+        if (!$validatedData['keterangan'] == null) {
+            $validatedData['keterangan'] = '';
+        }
+
+        $mapel = MataPelajaran::where('id', $request->input('id_mapel'));
+        $validatedData['pelajaran'] = $mapel->value('mapel');
+
         $class = ClassGrade::where('id', $request->input('id_kelas'));
-        $validatedData['kode_rombel'] = $class->value('tingkatan') . ' - MPL - ' . $class->value('kelas');
+        $validatedData['kode_rombel'] = $class->value('tingkatan') . ' - MPL - ' . $mapel->value('kode_mapel');
 
         CourseSchedule::where('id', $courseSchedule->id)->update($validatedData);
 

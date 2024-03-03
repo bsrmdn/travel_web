@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('course_schedules', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_kelas');
+            $table->foreignId('id_mapel');
             $table->string("kode_rombel");
             $table->string("pelajaran");
             $table->time('waktu_mulai');

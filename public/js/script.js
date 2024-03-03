@@ -83,47 +83,52 @@ fetch(`https://api.aladhan.com/v1/timingsByAddress/` + currentFullDate() + `?add
 
         // Tampilkan data jadwal sholat lima waktu
         const waktuSholatContainer = document.querySelector('.waktu-sholat');
-        for (const [key, value] of Object.entries(waktuSholatLimaWaktu)) {
-            // Ubah format waktu sholat menjadi objek Date
-            const waktuSholatMillis = new Date(`${tanggalSekarang} ${value}`).getTime();
-
-            // Jika waktu sholat sudah lewat, tambahkan kelas waktu-lewat
-            const waktuLebihDulu = waktuSholatMillis < waktuSekarangMillis ? ' waktu-lewat' : '';
-            const waktuSholatAkanDatang = waktuSholatMillis > waktuSekarangMillis;
-            console.log('waktuSekarangMillis: ', waktuSekarangMillis);
-            console.log('waktuSholatMillis: ', waktuSholatMillis);
-
-            // Ganti teks bahasa Inggris dengan terjemahan ke bahasa Indonesia
-            let translatedKey;
-            switch (key) {
-                case 'Fajr':
-                    translatedKey = 'Subuh';
-                    break;
-                case 'Dhuhr':
-                    translatedKey = 'Dzuhur';
-                    break;
-                case 'Asr':
-                    translatedKey = 'Ashar';
-                    break;
-                case 'Maghrib':
-                    translatedKey = 'Maghrib';
-                    break;
-                case 'Isha':
-                    translatedKey = 'Isya';
-                    break;
-                default:
-                    translatedKey = key;
-            }
-
-            // Tampilkan waktu sholat
-            const waktuSholatItem = document.createElement('div');
-            waktuSholatItem.className = `waktu-sholat-item${waktuLebihDulu}`;
-            waktuSholatItem.innerHTML = `<strong>${translatedKey}:</strong> ${value}`;
-            waktuSholatContainer.appendChild(waktuSholatItem);
-
-            // Hentikan loop setelah menemukan waktu sholat yang belum lewat
-            if (waktuSholatAkanDatang) break;
+        while (waktuSholatContainer.hasChildNodes()) {
+            waktuSholatContainer.removeChild(waktuSholatContainer.firstChild);
         }
+        function tampilkanWaktuSholat() {
+            for (const [key, value] of Object.entries(waktuSholatLimaWaktu)) {
+                // Ubah format waktu sholat menjadi objek Date
+                const waktuSholatMillis = new Date(`${tanggalSekarang} ${value}`).getTime();
+
+                // Jika waktu sholat sudah lewat, tambahkan kelas waktu-lewat
+                const waktuLebihDulu = waktuSholatMillis < waktuSekarangMillis ? ' waktu-lewat' : '';
+                const waktuSholatAkanDatang = waktuSholatMillis > waktuSekarangMillis;
+
+                // Ganti teks bahasa Inggris dengan terjemahan ke bahasa Indonesia
+                let translatedKey;
+                console.log('translatedKey: ', translatedKey);
+                switch (key) {
+                    case 'Fajr':
+                        translatedKey = 'Subuh';
+                        break;
+                    case 'Dhuhr':
+                        translatedKey = 'Dzuhur';
+                        break;
+                    case 'Asr':
+                        translatedKey = 'Ashar';
+                        break;
+                    case 'Maghrib':
+                        translatedKey = 'Maghrib';
+                        break;
+                    case 'Isha':
+                        translatedKey = 'Isya';
+                        break;
+                    default:
+                        translatedKey = key;
+                }
+
+                // Tampilkan waktu sholat
+                const waktuSholatItem = document.createElement('div');
+                waktuSholatItem.className = `waktu-sholat-item${waktuLebihDulu}`;
+                waktuSholatItem.innerHTML = `<strong>${translatedKey}:</strong> ${value}`;
+                waktuSholatContainer.appendChild(waktuSholatItem);
+
+                // Hentikan loop setelah menemukan waktu sholat yang belum lewat
+                if (waktuSholatAkanDatang) break;
+            }
+        }
+        setInterval(tampilkanWaktuSholat(), 60000);
     })
     .catch(error => console.error('Error:', error));
 

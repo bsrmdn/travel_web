@@ -71,7 +71,8 @@
                                                         <select class="form-select montserrat mb-3" id="editKelas" required
                                                             name="id_kelas">
                                                             @foreach ($grades as $grade)
-                                                                <option value="{{ $grade->id }}">
+                                                                <option value="{{ $grade->id }}"
+                                                                    @selected(old('id_kelas') == $grade->id)>
                                                                     {{ $grade->tingkatan }}-{{ $grade->kelas }}
                                                                 </option>
                                                             @endforeach
@@ -83,9 +84,15 @@
                                                     <label for="editPelajaran"
                                                         class="col-sm-2 col-form-label montserrat fw-semibold">Pelajaran</label>
                                                     <div class="col-sm-10">
-                                                        <input value="{{ old('pelajaran', $schedule->pelajaran) }}"
-                                                            id="editPelajaran" type="text"
-                                                            class="form-control montserrat mb-3" name="pelajaran" required>
+                                                        <select class="form-select montserrat mb-3" id="editPelajaran"
+                                                            required name="id_mapel">
+                                                            @foreach ($mapels as $mapel)
+                                                                <option value="{{ $mapel->id }}"
+                                                                    @selected(old('id_mapel') == $mapel->id)>
+                                                                    {{ $mapel->mapel }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
                                                     </div>
                                                 </div>
 
@@ -241,8 +248,14 @@
                             <label for="createPelajaran"
                                 class="col-sm-2 col-form-label montserrat fw-semibold">Pelajaran</label>
                             <div class="col-sm-10">
-                                <input id="createPelajaran" type="text" class="form-control montserrat mb-3"
-                                    name="pelajaran" required>
+                                <select class="form-select montserrat mb-3" id="createtPelajaran" required
+                                    name="id_mapel">
+                                    @foreach ($mapels as $mapel)
+                                        <option value="{{ $mapel->id }}" @selected(old('id_mapel') == $mapel->id)>
+                                            {{ $mapel->mapel }}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -301,16 +314,16 @@
             "Pengumuman 3",
             "Pengumuman 4"
         ];
-    
+
         var index = 0;
         var interval;
-    
+
         function changeAnnouncement() {
             document.getElementById("running-text").innerText = announcements[index];
             index = (index + 1) % announcements.length;
             document.getElementById("pengumuman").style.backgroundColor = getRandomColor();
         }
-    
+
         function getRandomColor() {
             var letters = '0123456789ABCDEF';
             var color = '#';
@@ -319,15 +332,15 @@
             }
             return color;
         }
-    
+
         function startRunningText() {
             interval = setInterval(changeAnnouncement, 3000); // Ubah setiap 3 detik
         }
-    
+
         function stopRunningText() {
             clearInterval(interval);
         }
-    
+
         startRunningText(); // Mulai running text secara otomatis saat halaman dimuat
     </script>
 @endsection

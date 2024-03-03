@@ -8,6 +8,7 @@ use App\Models\ClassGrade;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use App\Models\CourseSchedule;
+use App\Models\MataPelajaran;
 use App\Models\User;
 
 class DatabaseSeeder extends Seeder
@@ -25,15 +26,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $tingkatan = ['VII', 'VIII', 'IX'];
-        // $waktu_mulai = fake()->time();
-        // CourseSchedule::create([
-        //     'kode_rombel' => fake()->randomElement($tingkatan) + " - BIN - A",
-        //     'pelajaran' => "Bahasa Indonesia - Guru B. ind",
-        //     'waktu_mulai' => $waktu_mulai,
-        //     'waktu_selesai' => "09:51",
-        //     'ruang' => "A - 3.2",
-        //     'keterangan' => "pelajaran selesai"
-        // ]);
+
         CourseSchedule::factory(30)->create();
 
         for ($i = 0; $i < count($tingkatan); $i++) {
@@ -43,6 +36,21 @@ class DatabaseSeeder extends Seeder
                     'kelas' => chr($j),
                 ]);
             }
+        }
+        $mapel = collect([
+            'IND' => 'Bahasa Indonesia',
+            'ING' => 'Bahasa Inggris',
+            'IPA' => 'IPA',
+            'IPS' => 'IPS',
+            'PJK' => 'Pendidikan Jasmani Olahraga dan Kesehatan',
+            'MTK' => 'Matematika',
+            'PAI' => 'Pendidikan Agama Islam',
+        ]);
+        for ($k = 0; $k < count($mapel) - 1; $k++) {
+            MataPelajaran::create([
+                'kode_mapel' => $mapel->keys()[$k],
+                'mapel' => $mapel->values()[$k],
+            ]);
         }
 
         User::create([

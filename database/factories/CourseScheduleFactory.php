@@ -23,15 +23,30 @@ class CourseScheduleFactory extends Factory
         }
         $j = array_pop($abjad);
         array_unshift($abjad, $j);
+
+        $mapel = collect([
+            'IND' => 'Bahasa Indonesia',
+            'ING' => 'Bahasa Inggris',
+            'IPA' => 'IPA',
+            'IPS' => 'IPS',
+            'PJK' => 'Pendidikan Jasmani Olahraga dan Kesehatan',
+            'MTK' => 'Matematika',
+            'PAI' => 'Pendidikan Agama Islam',
+        ]);
+
+        $m = fake()->numberBetween(0, count($mapel) - 1);
+
         $waktu_mulai = fake()->time('H:i:s', '15:00:00');
         $waktu_selesai = '';
+
         do {
             $waktu_selesai = fake()->time();
         } while ($waktu_mulai > $waktu_selesai);
         return [
             'id_kelas' => $kelas,
-            'kode_rombel' => (($kelas <= 10 ? 'VII' : $kelas <= 20) ? 'VIII' : 'IX') . " - BIN - " . $abjad[$kelas % 10],
-            'pelajaran' => "Bahasa Indonesia",
+            'id_mapel' => $m + 1,
+            'kode_rombel' => (($kelas <= 10 ? 'VII' : $kelas <= 20) ? 'VIII' : 'IX') . " - " . $mapel->keys()[$m] . " - " . $abjad[$kelas % 10],
+            'pelajaran' => $mapel->values()[$m],
             'waktu_mulai' => $waktu_mulai,
             'waktu_selesai' => $waktu_selesai,
             'ruang' => "A - 3.2",
