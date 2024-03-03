@@ -17,7 +17,7 @@
     <header>
         <div class="row">
             <div class="col">
-                <div id="pengumuman" class="p-3">
+                <div id="pengumuman" class="p-3 mb-3">
                     <marquee id="running-text">Loading...</marquee>
                 </div>
             </div>
