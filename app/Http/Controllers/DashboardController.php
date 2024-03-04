@@ -42,7 +42,7 @@ class DashboardController extends Controller
             'keterangan' => 'nullable|string'
         ]);
 
-        if (!$validatedData['keterangan'] == null) {
+        if ($validatedData['keterangan'] == null) {
             $validatedData['keterangan'] = '';
         }
 
@@ -50,7 +50,7 @@ class DashboardController extends Controller
         $validatedData['pelajaran'] = $mapel->value('mapel');
 
         $class = ClassGrade::where('id', $request->input('id_kelas'));
-        $validatedData['kode_rombel'] = $class->value('tingkatan') . ' - MPL - ' . $mapel->value('kode_mapel');
+        $validatedData['kode_rombel'] = $class->value('tingkatan') . $mapel->value('kode_mapel') . $class->value('kelas');
 
         CourseSchedule::create($validatedData);
 
@@ -80,13 +80,15 @@ class DashboardController extends Controller
     public function update(Request $request, CourseSchedule $courseSchedule)
     {
         $validatedData = $request->validate([
+            'id_kelas' => 'required',
+            'id_mapel' => 'required',
             "waktu_mulai" => "required",
             "waktu_selesai" => "required",
             "ruang" => "required",
             'keterangan' => 'nullable|string'
         ]);
 
-        if (!$validatedData['keterangan'] == null) {
+        if ($validatedData['keterangan'] == null) {
             $validatedData['keterangan'] = '';
         }
 
@@ -94,7 +96,7 @@ class DashboardController extends Controller
         $validatedData['pelajaran'] = $mapel->value('mapel');
 
         $class = ClassGrade::where('id', $request->input('id_kelas'));
-        $validatedData['kode_rombel'] = $class->value('tingkatan') . ' - MPL - ' . $mapel->value('kode_mapel');
+        $validatedData['kode_rombel'] = $class->value('tingkatan') . $mapel->value('kode_mapel') . $class->value('kelas');
 
         CourseSchedule::where('id', $courseSchedule->id)->update($validatedData);
 

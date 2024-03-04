@@ -120,7 +120,8 @@ fetch(`https://api.aladhan.com/v1/timingsByAddress/` + currentFullDate() + `?add
 
                 // Tampilkan waktu sholat
                 const waktuSholatItem = document.createElement('div');
-                waktuSholatItem.className = `waktu-sholat-item${waktuLebihDulu}`;
+                waktuSholatItem.className += `waktu-sholat-item${waktuLebihDulu} col carousel-item`;
+                waktuSholatItem.className += waktuSholatMillis > waktuSekarangMillis ? `` : ` active`;
                 waktuSholatItem.innerHTML = `<strong>${translatedKey}:</strong> ${value}`;
                 waktuSholatContainer.appendChild(waktuSholatItem);
 
@@ -144,19 +145,19 @@ function tampilkanWaktuSekarang() {
 
 // Fungsi untuk menampilkan kalender Masehi
 function tampilkanKalenderMasehi() {
-    const waktuSekarang = new Date();
-    const tahun = waktuSekarang.getFullYear();
-    const bulan = waktuSekarang.getMonth() + 1;
-    const tanggal = waktuSekarang.getDate();
-    document.getElementById('kalender-masehi').textContent = `${tanggal}/${bulan}/${tahun}`;
+    // const waktuSekarang = new Date();
+    // const tahun = waktuSekarang.getFullYear();
+    // const bulan = waktuSekarang.getMonth() + 1;
+    // const tanggal = waktuSekarang.getDate();
+    document.getElementById('kalender-masehi').textContent = currentFullDate();
 }
 
 // Fungsi untuk menampilkan kalender Hijriah
 function tampilkanKalenderHijriah() {
-    fetch('https://api.aladhan.com/v1/gToH?date=02-03-2024')
+    fetch(`https://api.aladhan.com/v1/gToH?date=${currentFullDate()}`)
         .then(response => response.json())
         .then(data => {
-            document.getElementById('kalender-hijriah').textContent = data.data.hijri.date;
+            document.getElementById('kalender-hijriah').textContent = `${data.data.hijri.day}-${data.data.hijri.month.en}-${data.data.hijri.year}`;
         })
         .catch(error => console.error('Error:', error));
 }

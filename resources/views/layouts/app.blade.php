@@ -14,7 +14,12 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
+    {{-- @if (Route::currentRouteName() == 'dashboard') --}}
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+    {{-- @endif --}}
+    @if (Route::currentRouteName() == 'home')
+        <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    @endif
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" />
     <link rel="stylesheet" type="text/css"
