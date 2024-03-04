@@ -151,3 +151,35 @@ thead {
 .waktu-sekarang span {
   color: #666;
 }
+
+.footer {
+  background-color: #f8f9fa; /* Warna latar belakang */
+  padding: 50px 0; /* Padding atas dan bawah */
+  display: flex; /* Menggunakan display flex */
+}
+
+.footer .col-md-8 {
+  max-width: 70%; /* Lebar maksimum 50% untuk setiap kolom */
+}
+
+.footer h5 {
+  font-size: 44px !important; /* Ukuran font diperbesar menjadi 24px */
+  font-weight: bolder; /* Ketebalan font */
+  color: #333; /* Warna font */
+  margin-bottom: 10px; /* Jarak antara elemen di bawahnya */
+  margin-left: 20px; /* Jarak dari sisi kiri */
+}
+
+.footer p {
+  font-size: 20px !important;
+  font-weight: bold !important; /* Ukuran font diperbesar menjadi 16px */
+  color: #555; /* Warna font */
+  margin: 0; /* Menghapus margin default */
+  margin-bottom: 10px; /* Jarak antara elemen di bawahnya */
+  margin-left: 20px; /* Jarak dari sisi kiri */
+}
+
+.footer img {
+    margin-top: 0px !important; /* Jarak antara elemen di atasnya */
+    margin-left: 0px; /* Jarak dari sisi kiri */
+}

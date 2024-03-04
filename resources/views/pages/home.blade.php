@@ -34,7 +34,7 @@
                                             <th scope="col">Kode Rombel</th>
                                             <th scope="col">Pelajaran</th>
                                             <th scope="col">Waktu Mulai</th>
-                                            <th scope="col">Waktu Selesai</th>
+                                            {{-- <th scope="col">Waktu Selesai</th> --}}
                                             <th scope="col">Ruang</th>
                                             <th scope="col">Keterangan</th>
                                         </tr>
@@ -58,7 +58,7 @@
                                                 <td>{{ $schedule->kode_rombel }}</td>
                                                 <td>{{ $schedule->pelajaran }}</td>
                                                 <td class="start-time">{{ $schedule->waktu_mulai }}</td>
-                                                <td class="end-time">{{ $schedule->waktu_selesai }}</td>
+                                                {{-- <td class="end-time">{{ $schedule->waktu_selesai }}</td> --}}
                                                 <td>{{ $schedule->ruang }}</td>
                                                 <td>{{ $schedule->keterangan }}</td>
                                             </tr>
@@ -70,11 +70,18 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col">
-                    <p>&copy; 2024 Nama Perusahaan. All rights reserved.</p>
+            <div class="row footer">
+                <div class="col-auto pt-5">
+
+                    <h5>SMK Muhammadiyah 1 Sukoharjo</h5>
+                    <p>Jl. Raya Sukoharjo-Kartasura, Sukoharjo, Jawa Tengah</p>
+                    <p>Email: info@smkmuh1sukoharjo.com</p>
                 </div>
-            </div>
+                <div class="col text-center">
+                    <img src="img/logo-rpl-removebg.png" alt="SMK Muhammadiyah 1 Sukoharjo Logo" width="200">
+                    {{-- <img src="img/Logo-smkmutuharjo.png" alt="SMK Muhammadiyah 1 Sukoharjo Logo" width="400" class="gambar-muhi"> --}}
+                </div>
+            </div>       
         </div>
 
         <!-- Bagian Sponsor, Jadwal Guru Piket, dan Jadwal Sholat -->

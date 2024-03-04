@@ -121,7 +121,7 @@ fetch(`https://api.aladhan.com/v1/timingsByAddress/` + currentFullDate() + `?add
                 // Tampilkan waktu sholat
                 const waktuSholatItem = document.createElement('div');
                 waktuSholatItem.className += `waktu-sholat-item${waktuLebihDulu} col carousel-item`;
-                waktuSholatItem.className += waktuSholatMillis > waktuSekarangMillis ? `` : ` active`;
+                waktuSholatItem.className += waktuSholatMillis < waktuSekarangMillis ? `` : ` active`;
                 waktuSholatItem.innerHTML = `<strong>${translatedKey}:</strong> ${value}`;
                 waktuSholatContainer.appendChild(waktuSholatItem);
 
