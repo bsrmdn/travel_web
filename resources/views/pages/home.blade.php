@@ -70,7 +70,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row footer">
+            <div class="row footer sticky-bottom">
                 <div class="col-auto pt-5">
 
                     <h5>SMK Muhammadiyah 1 Sukoharjo</h5>
@@ -103,7 +103,7 @@
                 </div>
                 <!-- Bagian Jadwal Guru Piket -->
                 <div id="guru-piket" class="bg-light p-3 mb-3">
-                    <h2>Petugas Guru Piket</h2>
+                    <h2>Guru Piket</h2>
                     <ul>
                         <li>Guru 1</li>
                         <li>Guru 2</li>
@@ -117,12 +117,10 @@
                 </div>
                 <div id="jadwal-sholat" class="text-center">
                     <div class="row">
-                        <div class="col-12">
-                            <div id="sholat">Jadwal Sholat</div>
-                        </div>
+                        
                         <div class="col-12 text-bg-info">
                             <div class="waktu-item">
-                                <strong></strong> <span id="jam-sekarang"></span>
+                                <strong></strong> <span id="jam-sekarang" class="fw-bold"></span>
                             </div>
                         </div>
                     </div>
@@ -130,12 +128,15 @@
                         <div class="col-12">
                             <div class="waktu-sekarang">
                                 <div class="kalender-item">
-                                    <strong>Masehi:</strong> <span id="kalender-masehi"></span>
+                                     <span id="kalender-masehi"></span><strong> M </strong>
                                 </div>
                                 <div class="kalender-item">
-                                    <strong>Hijriah:</strong> <span id="kalender-hijriah"></span>
+                                    <span id="kalender-hijriah"></span><strong> H </strong> 
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-12 bg-warning">
+                            <div id="sholat">Jadwal Sholat</div>
                         </div>
                         <div class="col-12">
                             <div class="carousel slide" data-bs-ride="carousel">

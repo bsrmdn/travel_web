@@ -3,7 +3,7 @@
 }
 
 .custom-table {
-  background-image: url('/img/2.png');
+  background-image: url('/img/SMK.png');
   background-color: rgba(255, 255, 255, 0.162);
   background-size: cover;
   background-repeat: no-repeat;
@@ -67,24 +67,31 @@ thead {
 
 #guru-piket {
   height: 25vh;
+  font-size: 35px;
+}
+
+#guru-piket h2{
+  text-align: center;
+  background-color: #88ffb4;
+  font-size: 35px;
+  font-weight: bold;
 }
 
 #jadwal-sholat {
-  height: 20vh;
+  height: 35vh;
   max-width: 100%;
   margin-left: 0px;
+  
   /* Tinggi jadwal sholat diubah menjadi 40% */
 }
 
 #sponsor h2,
-#guru-piket h2,
 #jadwal-sholat h2 {
   font-size: 1.5rem;
   margin-bottom: 10px;
 }
 
 #sponsor p,
-#guru-piket p,
 #jadwal-sholat p {
   font-size: 1rem;
   margin-bottom: 0;
@@ -98,6 +105,7 @@ thead {
   /* Padding agar konten tidak terlalu dekat dengan tepi */
   border-radius: 8px;
   overflow: hidden;
+  font-size: 35px;
   /* Membuat sudut elemen agak melengkung */
 }
 
@@ -105,11 +113,13 @@ thead {
   font-size: 24px;
   /* Ukuran font untuk judul jadwal sholat */
   font-weight: bold;
+  font-size: 45px;
   /* Membuat judul lebih menonjol */
 }
 
 .waktu-sholat {
-  margin-top: 10px;
+  margin-top: 0px;
+  font-size: 45px;
   /* Jarak antara judul dan waktu sholat */
 }
 
@@ -124,6 +134,7 @@ thead {
 
 .kalender-item {
   margin-top: 5px;
+  font-size: 45px;
   /* Jarak antara item kalender */
 }
 
@@ -134,7 +145,7 @@ thead {
 
 
 #jam-sekarang {
-  font-size: 30px;
+  font-size: 3em;
   margin-top: 20px;
   margin-left: 0px;
 }
@@ -175,7 +186,7 @@ thead {
   font-weight: bold !important; /* Ukuran font diperbesar menjadi 16px */
   color: #555; /* Warna font */
   margin: 0; /* Menghapus margin default */
-  margin-bottom: 10px; /* Jarak antara elemen di bawahnya */
+  margin-bottom: 0px; /* Jarak antara elemen di bawahnya */
   margin-left: 20px; /* Jarak dari sisi kiri */
 }
 
