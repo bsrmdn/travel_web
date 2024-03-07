@@ -16,6 +16,7 @@
 
     {{-- @if (Route::currentRouteName() == 'dashboard') --}}
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
     {{-- @endif --}}
     @if (Route::currentRouteName() == 'home')
         <link rel="stylesheet" href="{{ asset('css/home.css') }}">

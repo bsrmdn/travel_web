@@ -102,7 +102,7 @@
                     </div>
                 </div>
                 <!-- Bagian Jadwal Guru Piket -->
-                <div id="guru-piket" class="bg-light p-3 mb-3">
+                <div id="guru-piket" class="bg-light p-3 mb-3 overflow-hidden">
                     <h2>Guru Piket</h2>
                     <ul>
                         <li>Guru 1</li>

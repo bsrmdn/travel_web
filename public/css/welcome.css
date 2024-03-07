@@ -1,0 +1,25 @@
+.bg-gambar{
+  background-image: url('/img/SMK2.png');
+  background-color: rgba(255, 255, 255, 0.162);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  color: yellow;
+}
+.text-welcome{
+    font-size: 5em;
+}
+
+.text-welcome a{
+    font-size: 0.5em;
+}
+
+.welcome{
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.text-login{
+    font-size: 2em;
+    color: white;
+}

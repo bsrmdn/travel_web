@@ -166,56 +166,7 @@
                     Baru</button>
             </div>
         </div>
-        <!-- Bagian Sponsor, Jadwal Guru Piket, dan Jadwal Sholat -->
-        <div class="col-4">
-            <aside>
-                <div id="sponsor" class="bg-light p-3 mb-3">
-                    <div class="slider">
-                        <div>
-                            <!-- Video slide -->
-                            <video controls autoplay muted loop onended="nextSlide()">
-                                <source src="assets/vidio-for-slide.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-                        </div>
-                        <div><img src="img/foto-for-slide.png" alt="Image 1"></div>
-                        <div><img src="img/foto-for-slide-scnd.png" alt="Image 2"></div>
-                        <!-- Tambahkan video atau gambar lainnya sesuai kebutuhan -->
-                    </div>
-                </div>
-                <!-- Bagian Jadwal Guru Piket -->
-                <div id="guru-piket" class="bg-light p-3 mb-3">
-                    <h2>Jadwal Guru Piket</h2>
-                    <p>Isi jadwal guru piket disini</p>
-                </div>
-                {{-- Jadwal Sholat dll --}}
-                <div id="jadwal-sholat">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div id="sholat">Jadwal Sholat</div>
-                            <div class="waktu-sholat mt-4">
-                                <!-- Data jadwal sholat lima waktu akan ditampilkan di sini -->
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="waktu-item">
-                                <strong></strong> <span id="jam-sekarang"></span>
-                            </div>
-                            <div class="waktu-sekarang">
-                                <div class="kalender-item">
-                                    <strong>Masehi:</strong> <span id="kalender-masehi"></span>
-                                </div>
-                                <div class="kalender-item">
-                                    <strong>Hijriah:</strong> <span id="kalender-hijriah"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {{-- END --}}
-            </aside>
-        </div>
-    </div>
+       
     {{-- Modal Create --}}
     <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
