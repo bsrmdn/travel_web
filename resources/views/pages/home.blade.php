@@ -142,7 +142,7 @@
                         </div>
                         <div class="col-12">
                             <div class="carousel slide" data-bs-ride="carousel">
-                                <div class="carousel-inner waktu-sholat row text-center"></div>
+                                <div class="carousel-inner waktu-sholat row text-center mt-5"></div>
                                 <!-- Data jadwal sholat lima waktu akan ditampilkan di sini -->
                             </div>
                         </div>
