@@ -6,6 +6,7 @@ use App\Models\CourseSchedule;
 use App\Http\Requests\StoreCourseScheduleRequest;
 use App\Http\Requests\UpdateCourseScheduleRequest;
 use App\Models\FlightSchedule;
+use Carbon\Carbon;
 
 class CourseScheduleController extends Controller
 {
@@ -14,7 +15,8 @@ class CourseScheduleController extends Controller
      */
     public function index()
     {
-        $courseSchedules = CourseSchedule::all();
+        Carbon::setLocale('id');
+        $courseSchedules = CourseSchedule::all()->where('hari', '=', Carbon::now()->isoFormat('dddd'));
         return view('pages.home', compact('courseSchedules'));
     }
 

@@ -8,6 +8,7 @@ use App\Models\ClassGrade;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use App\Models\CourseSchedule;
+use App\Models\Days;
 use App\Models\MataPelajaran;
 use App\Models\User;
 
@@ -46,10 +47,23 @@ class DatabaseSeeder extends Seeder
             'MTK' => 'Matematika',
             'PAI' => 'Pendidikan Agama Islam',
         ]);
+        $days = [
+            'Senin',
+            'Selasa',
+            'Rabu',
+            'Kamis',
+            'Jumat',
+            'Sabtu',
+        ];
         for ($k = 0; $k < count($mapel) - 1; $k++) {
             MataPelajaran::create([
                 'kode_mapel' => $mapel->keys()[$k],
                 'mapel' => $mapel->values()[$k],
+            ]);
+        }
+        foreach ($days as $day) {
+            Days::create([
+                'hari' => $day,
             ]);
         }
 

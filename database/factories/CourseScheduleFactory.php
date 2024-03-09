@@ -34,7 +34,17 @@ class CourseScheduleFactory extends Factory
             'PAI' => 'Pendidikan Agama Islam',
         ]);
 
+        $hari = [
+            'Senin',
+            'Selasa',
+            'Rabu',
+            'Kamis',
+            'Jumat',
+            'Sabtu',
+        ];
+
         $m = fake()->numberBetween(0, count($mapel) - 1);
+        $n = fake()->numberBetween(0, count($hari) - 1);
 
         $waktu_mulai = fake()->time('H:i:s', '15:00:00');
         $waktu_selesai = '';
@@ -42,11 +52,14 @@ class CourseScheduleFactory extends Factory
         do {
             $waktu_selesai = fake()->time();
         } while ($waktu_mulai > $waktu_selesai);
+
         return [
             'id_kelas' => $kelas,
             'id_mapel' => $m + 1,
+            'id_hari' => $n + 1,
             'kode_rombel' => (($kelas <= 10 ? 'VII' : $kelas <= 20) ? 'VIII' : 'IX') . " - " . $mapel->keys()[$m] . " - " . $abjad[$kelas % 10],
             'pelajaran' => $mapel->values()[$m],
+            'hari' => $hari[$n],
             'waktu_mulai' => $waktu_mulai,
             'waktu_selesai' => $waktu_selesai,
             'ruang' => "A - 3.2",

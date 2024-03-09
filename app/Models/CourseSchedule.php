@@ -10,7 +10,7 @@ class CourseSchedule extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
-    protected $with = ['classGrade', 'mataPelajaran'];
+    protected $with = ['classGrade', 'mataPelajaran', 'days'];
 
     public function classGrade()
     {
@@ -19,5 +19,9 @@ class CourseSchedule extends Model
     public function mataPelajaran()
     {
         return $this->belongsTo(MataPelajaran::class, 'id_mapel');
+    }
+    public function days()
+    {
+        return $this->belongsTo(Days::class, 'id_hari');
     }
 }
