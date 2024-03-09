@@ -15,8 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_kelas');
             $table->foreignId('id_mapel');
+            $table->foreignId('id_hari');
             $table->string("kode_rombel");
             $table->string("pelajaran");
+            $table->string('hari');
             $table->time('waktu_mulai');
             $table->time('waktu_selesai');
             $table->string("ruang");

@@ -11,6 +11,9 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-end z-1" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ route('home') }}">
+                        <i class="bi bi-house"></i> {{ __('Home') }}
+                    </a>
                     <a class="dropdown-item" href="{{ route('dashboard') }}">
                         <i class="bi bi-person"></i> {{ __('Dashboard') }}
                     </a>

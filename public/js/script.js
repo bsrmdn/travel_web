@@ -20,7 +20,7 @@ $(document).ready(function () {
     }
 });
 
-var currentTime = () => {
+let currentTime = (useSecond = true) => {
     let date = new Date();
     let hh = date.getHours();
     let mm = date.getMinutes();
@@ -35,11 +35,12 @@ var currentTime = () => {
     //     session = "PM";
     // }
 
-    hh = (hh < 10) ? "0" + hh : hh;
-    mm = (mm < 10) ? "0" + mm : mm;
-    ss = (ss < 10) ? "0" + ss : ss;
+    hh = hh.toString().padStart(2, '0');
+    mm = mm.toString().padStart(2, '0');
+    ss = ss.toString().padStart(2, '0');
 
-    let time = hh + ":" + mm + ":" + ss;
+    let time = useSecond ? `${hh}:${mm}:${ss}` : `${hh}:${mm}`;
+
 
     return time;
 }
@@ -97,7 +98,6 @@ fetch(`https://api.aladhan.com/v1/timingsByAddress/` + currentFullDate() + `?add
 
                 // Ganti teks bahasa Inggris dengan terjemahan ke bahasa Indonesia
                 let translatedKey;
-                console.log('translatedKey: ', translatedKey);
                 switch (key) {
                     case 'Fajr':
                         translatedKey = 'Subuh';
@@ -121,7 +121,7 @@ fetch(`https://api.aladhan.com/v1/timingsByAddress/` + currentFullDate() + `?add
                 // Tampilkan waktu sholat
                 const waktuSholatItem = document.createElement('div');
                 waktuSholatItem.className += `waktu-sholat-item${waktuLebihDulu} col carousel-item`;
-                waktuSholatItem.className += waktuSholatMillis < waktuSekarangMillis ? `` : ` active`;
+                waktuSholatItem.className += translatedKey == 'Subuh' ? ` active` : ``;
                 waktuSholatItem.innerHTML = `<strong>${translatedKey}:</strong> ${value}`;
                 waktuSholatContainer.appendChild(waktuSholatItem);
 

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\ClassGrade;
 use App\Models\CourseSchedule;
+use App\Models\Days;
 use App\Models\MataPelajaran;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -14,10 +16,13 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        Carbon::setLocale('id');
         $courseSchedules = CourseSchedule::all();
         $grades = ClassGrade::all();
         $mapels = MataPelajaran::all();
-        return view('pages.dashboard', compact(['courseSchedules', 'grades', 'mapels']));
+        $days = Days::all();
+
+        return view('pages.dashboard', compact(['courseSchedules', 'grades', 'mapels', 'days']));
     }
 
     /**
@@ -33,9 +38,11 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request;
         $validatedData = $request->validate([
             'id_kelas' => 'required',
             'id_mapel' => 'required',
+            'id_hari' => 'required',
             "waktu_mulai" => "required",
             "waktu_selesai" => "required",
             "ruang" => "required",
@@ -50,12 +57,15 @@ class DashboardController extends Controller
         $validatedData['pelajaran'] = $mapel->value('mapel');
 
         $class = ClassGrade::where('id', $request->input('id_kelas'));
-        $validatedData['kode_rombel'] = $class->value('tingkatan') . $mapel->value('kode_mapel') . $class->value('kelas');
+        $validatedData['kode_rombel'] = $class->value('tingkatan') . ' - ' . $mapel->value('kode_mapel') . ' - ' . $class->value('kelas');
+
+        $day = Days::where('id',  $request->input('id_hari'));
+        $validatedData['hari'] = $day->value('hari');
 
         CourseSchedule::create($validatedData);
 
-        return redirect('/dashboard')->with('success', 'Your book has been updated!');
         // return $validatedData;
+        return redirect('/dashboard')->with('success', 'Your book has been updated!');
     }
 
     /**
@@ -79,9 +89,12 @@ class DashboardController extends Controller
      */
     public function update(Request $request, CourseSchedule $courseSchedule)
     {
+        // return $request;
         $validatedData = $request->validate([
             'id_kelas' => 'required',
             'id_mapel' => 'required',
+            'id_hari' => 'required',
+            // 'hari' => 'required',
             "waktu_mulai" => "required",
             "waktu_selesai" => "required",
             "ruang" => "required",
@@ -96,7 +109,10 @@ class DashboardController extends Controller
         $validatedData['pelajaran'] = $mapel->value('mapel');
 
         $class = ClassGrade::where('id', $request->input('id_kelas'));
-        $validatedData['kode_rombel'] = $class->value('tingkatan') . $mapel->value('kode_mapel') . $class->value('kelas');
+        $validatedData['kode_rombel'] = $class->value('tingkatan') . ' - ' . $mapel->value('kode_mapel') . ' - ' . $class->value('kelas');
+
+        $day = Days::where('id',  $request->input('id_hari'));
+        $validatedData['hari'] = $day->value('hari');
 
         CourseSchedule::where('id', $courseSchedule->id)->update($validatedData);
 
