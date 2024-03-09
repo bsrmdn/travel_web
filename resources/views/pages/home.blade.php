@@ -27,7 +27,7 @@
                     <div class="carousel-inner">
                         @for ($i = 1; $i <= 3; $i++)
                             <div class="carousel-item @if ($i == 1) active @endif"
-                                data-bs-interval="10000">
+                                data-bs-interval="6000">
                                 <table class="table table-success">
                                     <thead>
                                         <tr>
@@ -57,7 +57,9 @@
                                             <tr class="schedule-row d-none">
                                                 <td>{{ $schedule->kode_rombel }}</td>
                                                 <td>{{ $schedule->pelajaran }}</td>
-                                                <td class="start-time">{{ $schedule->waktu_mulai }}</td>
+                                                <td class="start-time">
+                                                    {{ \Carbon\Carbon::parse($schedule->waktu_mulai)->format('H:i') }}
+                                                </td>
                                                 {{-- <td class="end-time">{{ $schedule->waktu_selesai }}</td> --}}
                                                 <td>{{ $schedule->ruang }}</td>
                                                 <td>{{ $schedule->keterangan }}</td>
@@ -81,7 +83,7 @@
                     <img src="img/logo-rpl-removebg.png" alt="SMK Muhammadiyah 1 Sukoharjo Logo" width="200">
                     {{-- <img src="img/Logo-smkmutuharjo.png" alt="SMK Muhammadiyah 1 Sukoharjo Logo" width="400" class="gambar-muhi"> --}}
                 </div>
-            </div>       
+            </div>
         </div>
 
         <!-- Bagian Sponsor, Jadwal Guru Piket, dan Jadwal Sholat -->
@@ -117,7 +119,7 @@
                 </div>
                 <div id="jadwal-sholat" class="text-center">
                     <div class="row">
-                        
+
                         <div class="col-12 text-bg-info">
                             <div class="waktu-item">
                                 <strong></strong> <span id="jam-sekarang" class="fw-bold"></span>
@@ -128,10 +130,10 @@
                         <div class="col-12">
                             <div class="waktu-sekarang">
                                 <div class="kalender-item">
-                                     <span id="kalender-masehi"></span><strong> M </strong>
+                                    <span id="kalender-masehi"></span><strong> M </strong>
                                 </div>
                                 <div class="kalender-item">
-                                    <span id="kalender-hijriah"></span><strong> H </strong> 
+                                    <span id="kalender-hijriah"></span><strong> H </strong>
                                 </div>
                             </div>
                         </div>
