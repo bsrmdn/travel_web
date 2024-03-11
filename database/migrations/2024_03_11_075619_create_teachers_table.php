@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('teacher_picket_schedules', function (Blueprint $table) {
+        Schema::create('teachers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_hari');
-            $table->foreignId('id_guru');
-            $table->string('hari');
             $table->string('nama_guru');
-            $table->enum('tugas', ['Petugas Piket', 'Petugas 3S']);
             $table->timestamps();
         });
     }
@@ -27,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('teacher_picket_schedules');
+        Schema::dropIfExists('teachers');
     }
 };

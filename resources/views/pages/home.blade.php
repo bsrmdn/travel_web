@@ -28,7 +28,7 @@
                         @for ($i = 1; $i <= 3; $i++)
                             <div class="carousel-item @if ($i == 1) active @endif"
                                 data-bs-interval="6000">
-                                <table class="table table-success">
+                                <table class="table table-success text-center">
                                     <thead>
                                         <tr>
                                             <th scope="col">Kode Rombel</th>
@@ -106,16 +106,17 @@
                 <!-- Bagian Jadwal Guru Piket -->
                 <div id="guru-piket" class="bg-light p-3 mb-3 overflow-hidden">
                     <h2>Guru Piket</h2>
-                    <ul>
-                        <li>Guru 1</li>
-                        <li>Guru 2</li>
-                    </ul>
+                    <div class="row row-cols-2">
+                        @foreach ($picketSchedules->where('tugas', 'Petugas Piket') as $guruPiket)
+                            <div class="col">{{ $guruPiket->nama_guru }}</div>
+                        @endforeach
+                    </div>
                     <h2>Petugas 3S</h2>
-                    <ul>
-                        <li>Guru 1</li>
-                        <li>Guru 2</li>
-                        <li>Guru 3</li>
-                    </ul>
+                    <div class="row row-cols-2">
+                        @foreach ($picketSchedules->where('tugas', 'Petugas 3S') as $guru3S)
+                            <div class="col">{{ $guru3S->nama_guru }}</div>
+                        @endforeach
+                    </div>
                 </div>
                 <div id="jadwal-sholat" class="text-center">
                     <div class="row">

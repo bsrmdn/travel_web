@@ -25,9 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $courseSchedules = CourseSchedule::all();
-        $grades = ClassGrade::all();
-        return view('pages.dashboard', compact(['courseSchedules', 'grades']));
+        // $courseSchedules = CourseSchedule::all();
+        // $grades = ClassGrade::all();
+        // return view('pages.dashboard', compact(['courseSchedules', 'grades']));
     }
 
     /**

@@ -16,8 +16,19 @@ class TeacherPicketScheduleFactory extends Factory
      */
     public function definition(): array
     {
+        // $hari = [
+        //     'Senin',
+        //     'Selasa',
+        //     'Rabu',
+        //     'Kamis',
+        //     'Jumat',
+        //     'Sabtu',
+        // ];
+        // $n = fake()->numberBetween(0, count($hari) - 1);
+
         return [
-            //
+            // 'id_hari' => $n + 1,
+
         ];
     }
 }

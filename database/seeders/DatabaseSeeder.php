@@ -10,6 +10,7 @@ use Illuminate\Database\Seeder;
 use App\Models\CourseSchedule;
 use App\Models\Days;
 use App\Models\MataPelajaran;
+use App\Models\Teachers;
 use App\Models\User;
 
 class DatabaseSeeder extends Seeder
@@ -73,5 +74,11 @@ class DatabaseSeeder extends Seeder
             'password' => 'admin',
             'remember_token' => Str::random(10),
         ]);
+
+        for ($i = 0; $i < 10; $i++) {
+            Teachers::create([
+                'nama_guru' => fake('id_ID')->name()
+            ]);
+        }
     }
 }
